@@ -1,0 +1,16 @@
+:root {
+    --first-color: #FFFFFF;
+    --second-color: #FF4242;
+    --body-color: #004112;
+
+    /* font 크기는 점차 수정할 생각 */
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.8rem;
+    --smaller-font-size: 0.6rem;
+    --font-thin: 200;
+    --font-regular: 400;
+    --font-bold: 700;
+}
