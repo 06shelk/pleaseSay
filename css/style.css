@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'HakgyoansimDoldamB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimDoldamB.woff2') format('woff2');
+}
+
 :root {
     --first-color: #FFFFFF;
     --second-color: #FF4242;
@@ -12,5 +17,11 @@
     --smaller-font-size: 0.6rem;
     --font-thin: 200;
     --font-regular: 400;
-    --font-bold: 700;
+    --font-bold: 700;   
 }
+
+/* 폰트 적용 */
+h1, h2, h3, h4, h5, h6, p, li, span {
+    font-family: 'HakgyoansimDoldamB';
+}
+
