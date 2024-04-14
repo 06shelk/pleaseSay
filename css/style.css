@@ -20,8 +20,34 @@
     --font-bold: 700;   
 }
 
+* { margin: 0; padding: 0; }
+
 /* 폰트 적용 */
-h1, h2, h3, h4, h5, h6, p, li, span {
+h1, h2, h3, h4, h5, h6, p, li, span, div {
     font-family: 'HakgyoansimDoldamB';
 }
+
+/* 전체 색상 적용 */
+body {
+    background-color: var(--body-color);
+    color: var(--first-color);
+}
+
+/* 가운데 정렬 */
+#wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 가운데 정렬 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
