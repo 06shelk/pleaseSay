@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'HakgyoansimDoldamB';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimDoldamB.woff2') format('woff2');
-}
-
 :root {
     --first-color: #FFFFFF;
     --second-color: #FF4242;
@@ -17,11 +12,42 @@
     --smaller-font-size: 0.6rem;
     --font-thin: 200;
     --font-regular: 400;
+<<<<<<< HEAD
     --font-bold: 700;   
 }
 
+* { margin: 0; padding: 0; }
+
 /* 폰트 적용 */
-h1, h2, h3, h4, h5, h6, p, li, span {
+h1, h2, h3, h4, h5, h6, p, li, span, div {
     font-family: 'HakgyoansimDoldamB';
 }
 
+/* 전체 색상 적용 */
+body {
+    background-color: var(--body-color);
+    color: var(--first-color);
+}
+
+/* 가운데 정렬 */
+#wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 가운데 정렬 */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+=======
+    --font-bold: 700;
+}
+>>>>>>> parent of b8d4dbf (⚡[feat] : 폰트 추가)

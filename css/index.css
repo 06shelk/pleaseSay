@@ -1,0 +1,43 @@
+.title-img {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.title-img img {
+    width: 80%;
+}
+
+.ex {
+    width: 80%;
+    height: 500px;
+    border: 3px solid var(--first-color);
+
+}
+
+.ex h2 {
+    font-size: 4em;
+    padding-bottom: 50px;
+} 
+
+.ex p {
+    font-size: 3em;
+} 
+
+
+.title-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.ranking {
+    font-size: 4rem;
+    margin: 20px;
+}
+
+.start {
+    color: var(--second-color);
+    font-size: 4rem;
+    margin: 20px;
+}
