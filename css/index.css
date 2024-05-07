@@ -34,10 +34,12 @@
 .ranking {
     font-size: 4rem;
     margin: 20px;
+    cursor: pointer;
 }
 
 .start {
     color: var(--second-color);
     font-size: 4rem;
     margin: 20px;
+    cursor: pointer;
 }
