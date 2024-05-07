@@ -12,7 +12,6 @@
     --smaller-font-size: 0.6rem;
     --font-thin: 200;
     --font-regular: 400;
-<<<<<<< HEAD
     --font-bold: 700;   
 }
 
@@ -46,8 +45,3 @@ body {
     align-items: center;
 }
 
-
-=======
-    --font-bold: 700;
-}
->>>>>>> parent of b8d4dbf (⚡[feat] : 폰트 추가)
