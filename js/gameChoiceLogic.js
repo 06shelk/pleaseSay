@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', function() {
             endGame.dispatchEvent(new MouseEvent('mouseover'));
             setTimeout(function() {
                 endGame.dispatchEvent(new MouseEvent('mouseout'));
-                window.location.href = "index.html"; 
+                window.location.href = "lastWordRule.html"; 
             }, 1000); // 1초 후에 마우스 아웃 이벤트 발생
         } else if (transcript === "발음 테스트") {
             // "발음"을 말한 경우에만 해당 요소가 화면에 나타나도록 함
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 
                 pronGame.dispatchEvent(new MouseEvent('mouseout'));
-                window.location.href = "index.html"; 
+                window.location.href = "pronRule.html"; 
             }, 1000); // 1초 후에 마우스 아웃 이벤트 발생
             
         } else {
