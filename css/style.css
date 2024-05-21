@@ -24,7 +24,7 @@
 * { margin: 0; padding: 0; }
 
 /* 폰트 적용 */
-h1, h2, h3, h4, h5, h6, p, li, span, div ,td{
+h1, h2, h3, h4, h5, h6, p, li, span, div ,td, textarea {
     font-family: 'HakgyoansimDoldamB';
 }
 
@@ -68,4 +68,53 @@ body {
 
 .red-title {
     color: #FF4242;
+}
+
+
+/* 도움말 css */
+.questionIcon {
+    width: 70px;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+}
+
+.questionIcon img {
+    width: 70px;
+    height: 70px;
+}
+
+.questionExp {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 110px;
+    margin: 20px;
+    width: 400px;
+    height: 200px;
+    border-radius: 30px;
+    background-color: #D9D9D9;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.9rem;
+    color: #000000;
+    font-weight: 200;
+}
+
+.questionExp::after {
+    content: "";
+    position: absolute;
+    bottom: 20px; /* 꼬리의 위치 조정 */
+    right: -18px; /* 꼬리의 위치 조정 */
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #D9D9D9;
+}
+
+.questionExp p {
+    padding: 10px;
 }
