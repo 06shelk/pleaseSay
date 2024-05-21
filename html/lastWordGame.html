@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기 게임</title>
+    <link rel="stylesheet" href="../css/lastWord.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        #speech_result {
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="title"> 
+        끝말잇기를 말로 하세요
+    </div>
+    <div class="main">
+        <div class="timeZone"></div>
+        <div class="timeZone"></div>
+        <div class="timer-bar">
+            <div class="timer-fill" id="timer-fill"></div>
+        </div>
+        <div class="keyWord"></div>
+        <!-- 음성 입력을 위한 입력란 -->
+        <input type="text" id="word" autocomplete="off">
+
+
+        <div class="point">
+            <span> 점수 : </span>
+            <span id="point"></span>
+        </div>
+    </div>
+
+    <!-- <script src="./speechRecognition.js"></script> -->
+    <script src="../js/speechRecognition copy.js"></script>
+
+    <!-- <script src="./game_원본.js"></script> -->
+    <script src="../js/hangul-tools.js"></script>
+    <script src="../js/hangul-tools.js"></script>
+</body>
+</html>
