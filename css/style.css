@@ -49,6 +49,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 200vh;
 }
 
 /* 도움말 css */
