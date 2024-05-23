@@ -1,5 +1,7 @@
 .pronGame_inner {
     height: 100vh;
+    overflow: hidden;
+
 }
 
 .prongame_container {
@@ -19,41 +21,38 @@
     text-align: center;
 }
 
-.red-title {
-    color: #FF4242;
-}
 
-h1 {
-    font-size: 4rem;
+.title_container h1 {
+    font-size: var( --h1-font-size);
     padding-bottom: 100px;
 }
 
 
 #question {
-    border: 3px solid #fff;
+    border: 3px solid var(--first-color);
     border-radius: 15px;
     width: 1000px;
     height: 150px;
-    font-size: 2rem;
+    font-size: var(--normal-font-size);
     padding: 50px;
     text-align: center;
    
 }
 
 textarea {
-    margin-top: 70px;
+    margin-top: 50px;
     background-color: var(--body-color);
     color: var(--first-color);
 
     border: none;
     width: 500px;
     height: 150px;
-    font-size: 2rem;
+    font-size: var(--normal-font-size);
 }
 
 
 .round-inner {
-    font-size: 2em;
+    font-size: var(--normal-font-size);
     display: flex;
     align-items: center;
 }
@@ -64,5 +63,5 @@ textarea {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font-size: 2em;
+    font-size: var(--normal-font-size);
 }

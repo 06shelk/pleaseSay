@@ -5,14 +5,16 @@ window.addEventListener('DOMContentLoaded', function() {
     recognition.onresult = function(event) {
         var transcript = event.results[0][0].transcript.toLowerCase(); // 인식된 음성을 소문자로 변환
         var currentUrl = window.location.href; // 현재 URL을 변수에 저장
-
-        if (transcript === "게임 고르기") {
-            window.location.href = "gameChoice.html"; // 다음 페이지로 이동
-        } else if (transcript === "랭킹보기") {
+        console.log(currentUrl);
+        
+        if (transcript === "게임고르기" || transcript === "게임 고르기" ) {
+            window.location.href = "../html/gameChoice.html"; // 다음 페이지로 이동
+        } else if (transcript === "랭킹보기" || transcript === "랭킹 보기") {
             window.location.href = "test.html"; // 다음 페이지로 이동
-        } else if (transcript === "다음 화면") {
+       
+        } else if (transcript === "다음") {
             if (currentUrl.includes("index.html")) {
-                window.location.href = "pronRule.html"; // test.html에서 game.html로 이동
+                window.location.href = "../html/nameChange.html";  // 상위 폴더의 nameChange.html로 이동
             } else if (currentUrl.includes("ss.html")) {
                 window.location.href = "game1.html"; // ss.html에서 game1.html로 이동
             } else {

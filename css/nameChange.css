@@ -25,7 +25,7 @@ input[type="text"] {
     text-align: center;
 }
 #userid{
-    border: 3px solid #fff; /* 테두리 스타일 및 색상 설정 */
+    border: 3px solid var(--first-color); /* 테두리 스타일 및 색상 설정 */
     /* outline: none; */
     border-radius: 100px;
     width: 300px;
