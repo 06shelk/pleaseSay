@@ -22,6 +22,9 @@ window.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             console.log("다른 단어를 말해도 녹음 유지됨.");
+            if ( window.location.href == "../html/nameChange.html") {
+                alert("확인")
+            }
         }
     };
 
