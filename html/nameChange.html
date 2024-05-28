@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/nameChange.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/nameChange.css">
 </head>
 <body>
     <div class="nameChange">
@@ -16,18 +16,27 @@
         
         <div class="nameChange__inner">
             <form action="../php/nameChangeLogic.php" method="post">
-               
                 <div id="userid">
                     <input type="text" id="user_id" name="user_id" placeholder="10글자 내로 작성하세요">
                 </div>
             </form>
 
-            <!-- <div class="confirmName">
-                정말로 닉네임을 <span class="red-title">이설화</span>으로 정하실 건가요?
-            </div> -->
+            <div id="confirmName" class="confirmName" style="display: none;">
+            <!-- <div id="confirmName" class="confirmName" > -->
+                <div class="confirmName_text">
+                    <div>
+                        <p>정말로 닉네임을</p>
+                        <p> <span class="red-title" id="nickname"></span>으로 정하실 건가요?</p>    
+                    </div>
+                   
+                    <div class="choice_name">
+                        <span class="yes">예</span> / <span class="no">아니오</span>
+                    </div>
+                </div>
+            </div>
         </div>
-       
     </div>
-
+    
+    <script src="../js/nameChange-logic.js"></script>
 </body>
 </html>
