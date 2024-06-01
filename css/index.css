@@ -16,12 +16,12 @@
 }
 
 .ex h2 {
-    font-size: 4em;
+    font-size: var(--h1-font-size);
     padding-bottom: 50px;
 } 
 
 .ex p {
-    font-size: 3em;
+    font-size: var(--h2-font-size);
 } 
 
 
@@ -32,14 +32,14 @@
 }
 
 .ranking {
-    font-size: 4rem;
+    font-size: var(--h1-font-size);
     margin: 20px;
     cursor: pointer;
 }
 
 .start {
     color: var(--second-color);
-    font-size: 4rem;
+    font-size: var(--h1-font-size);
     margin: 20px;
     cursor: pointer;
 }

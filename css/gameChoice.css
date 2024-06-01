@@ -3,14 +3,14 @@
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: var(--h1-font-size);
     padding-bottom: 100px;
 }
 
 .endGame, .PronGame {
     border: 2px solid var(--first-color);
     width: 500px;
-    font-size: 4rem;
+    font-size: var(--h1-font-size);
     margin: 25px;
     text-align: center;
     padding: 20px;
