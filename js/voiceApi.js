@@ -8,18 +8,37 @@ window.addEventListener('DOMContentLoaded', function() {
         console.log(currentUrl);
         
         if (transcript === "게임고르기" || transcript === "게임 고르기" ) {
-            window.location.href = "../html/gameChoice.html"; // 다음 페이지로 이동
+            window.location.href = "../html/nameChange.html"; // 다음 페이지로 이동
         } else if (transcript === "랭킹보기" || transcript === "랭킹 보기") {
-            window.location.href = "test.html"; // 다음 페이지로 이동
+            window.location.href = "http://localhost/PleaseSay/php/lastWordRank.php"; // 다음 페이지로 이동
        
         } else if (transcript === "다음") {
-            if (currentUrl.includes("index.html")) {
-                window.location.href = "../html/nameChange.html";  // 상위 폴더의 nameChange.html로 이동
-            } else if (currentUrl.includes("ss.html")) {
-                window.location.href = "game1.html"; // ss.html에서 game1.html로 이동
+            if (currentUrl.includes("lastWordRule.html")) {
+                window.location.href = "lastWordGame.html"; // ss.html에서 game1.html로 이동
+            } else if (currentUrl.includes("pronRule.html")) {
+                window.location.href = "../html/pronGame.html"; 
             } else {
                 console.log("현재 페이지에 맞는 다음 이동 페이지가 정의되지 않았습니다.");
             }
+        }else if(transcript === "도움말"){
+            var icon = document.getElementById('questionIcon');
+            var questionExp = document.getElementById('questionExp');
+
+            // 아이콘 이미지 변경
+            icon.src = '../img/questionIconHover.png';
+
+            // 말풍선 표시
+            questionExp.style.display = 'block';
+        }else if(transcript === "종료"){
+            var icon = document.getElementById('questionIcon');
+            var questionExp = document.getElementById('questionExp');
+
+            // 아이콘 이미지 변경
+            icon.src = '../img/questionIcon.png';
+
+            // 말풍선 표시
+            questionExp.style.display = 'none';
+
         } else {
             console.log("다른 단어를 말해도 녹음 유지됨.");
             if ( window.location.href == "../html/nameChange.html") {
