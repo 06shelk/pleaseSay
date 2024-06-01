@@ -53,7 +53,7 @@ function handleSpeechInput(text) {
                 if (result > 0) {
                     input.value = '';
                     input.style.outline = '';
-                    time = 10;
+                    // time = 10;
 
                     point = point + (word.length * 10);
                     pointZone.innerHTML = point;
