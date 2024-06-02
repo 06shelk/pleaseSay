@@ -33,9 +33,14 @@ function timeCheck() {
         clearInterval(start);
         endGame();
     } else {
+        if (time <= 10) {
+            timeZone.style.color = 'red'; // 시간이 10초 이하일 때 텍스트 색상을 빨간색으로 변경
+            timeZone.style.borderColor = 'red';
+        }
         time -= 1;
     }
 }
+
 
 function endGame() {
     input.setAttribute("disabled", true);

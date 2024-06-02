@@ -5,18 +5,21 @@ body {
     font-size: var(--h1-font-size);
     margin: 50px;
 }
-.timer-bar {
-    width: 70%; /* 중앙 정렬 및 너비 조정 */
-    height: 20px;
-    background-color: #ddd;
-    margin: 10px auto; /* 중앙 정렬을 위한 margin 추가 */
-    border-radius: 10px; /* border-radius 추가 */
-}
 
-.timer-fill {
-    height: 100%;
-    background-color: red; /* 색상을 red로 변경 */
-    border-radius: 10px; /* border-radius 추가 */
+.timeZone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px; /* 원의 크기 */
+    height: 70px; /* 원의 크기 */
+    border: solid white 3px;
+    border-radius: 50%;
+    /* background-color: lightgray;  */
+    font-size: 20px; /* 숫자 크기 */
+    font-weight: bold;
+    position: absolute; /* 또는 fixed */
+    top: 20px;
+    right: 20px;
 }
 
 .keyWord {
