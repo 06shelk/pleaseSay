@@ -24,6 +24,15 @@ function startSpeechRecognition() {
         handleSpeechInput(text); // 음성 입력 처리 함수 호출
     });
 
+    recognition.addEventListener("error", (event) => {
+        console.error("음성 인식 중 오류 발생: " + event.error);
+    });
+
+    recognition.addEventListener("end", () => {
+        console.log("음성 인식이 중지되었습니다.");
+        recognition.start(); // 녹음이 중지되면 다시 시작
+    });
+
     recognition.start();
 }
 
@@ -34,17 +43,15 @@ function endSpeechRecognition() {
 
 // 음성 입력 이벤트 처리 함수
 function handleSpeechInput(text) {
-    const prevWord = keyWord.innerHTML
-    word = text.trim();
+    const prevWord = keyWord.innerHTML;
+    const word = text.trim();
 
     clearInterval(start);
 
     if (word.length > 1 && HanTools.dueum(prevWord[prevWord.length - 1]) === word[0]) {
-
         fetch(`https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${word}&advanced=y&method=exact`)
             .then(res => res.text())
             .then(data => {
-
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(data, "text/xml");
 
@@ -53,8 +60,6 @@ function handleSpeechInput(text) {
                 if (result > 0) {
                     input.value = '';
                     input.style.outline = '';
-                    // time = 10;
-
                     point = point + (word.length * 10);
                     pointZone.innerHTML = point;
 
@@ -75,34 +80,24 @@ function handleSpeechInput(text) {
 
                             timeCheck();
                             start = setInterval(timeCheck, 1000);
-                            restartSpeechRecognition(); // 다음 단어로 넘어갈 때 음성 인식 재시작
                         })
                         .catch(error => {
                             console.log(error);
                         });
-
                 } else {
                     input.value = '';
                     input.style.outline = '1px solid red';
                     start = setInterval(timeCheck, 1000);
                 }
-
             })
             .catch(error => {
                 console.log(error);
             });
-
     } else {
         input.value = '';
         input.style.outline = '1px solid red';
         start = setInterval(timeCheck, 1000);
     }
-}
-
-// 다음 단어로 넘어갈 때 음성 인식을 재시작하는 함수
-function restartSpeechRecognition() {
-    endSpeechRecognition(); // 현재 음성 입력 중지
-    startSpeechRecognition(); // 음성 입력 다시 시작
 }
 
 window.addEventListener("load", checkCompatibility);
