@@ -77,8 +77,8 @@ body {
 .goBackButton {
     position: fixed;
     top: 20px;
-    left: 20px;
-    margin: 20px;
+    left: 100px;
+    margin-top: 45px;
     width: 120px;
     height: 30px;
     border-radius: 30px;
@@ -143,6 +143,6 @@ body {
     height: 200px;
     background-color: var(--body-color);
     font-size: var(--h1-font-size);
-    line-height: 300px;
+    line-height: 200px;
     text-align: center;
 }
