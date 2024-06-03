@@ -1,6 +1,3 @@
-//파일 가져오기
-// import { startSpeechREcognition } from "./inputValue.js";
-
 let sentences = [
     {
         "id": 1,
@@ -12,15 +9,15 @@ let sentences = [
     },
     {
         "id": 3,
-        "title": "저기 계신 저분이 박 법학 박사이고 여기 계신 이 분이 백 법학 박사이다",
+        "title": "서울특별시 특허 허가과 허가 과장 허 과장",
     },
     {
         "id": 4,
-        "title": "저기 계신 저분이 박 법학 박사이고 여기 계신 이 분이 백 법학 박사이다",
+        "title": "시골 찹쌀 햇찹쌀 도시 찹쌀 촌 찹쌀",
     },
     {
         "id": 5,
-        "title": "저기 계신 저분이 박 법학 박사이고 여기 계신 이 분이 백 법학 박사이다",
+        "title": "고려고 교복은 고급 교복이다 고려고 교복은 고급 원단을 사용했다",
     },
     {
         "id": 6,
@@ -28,11 +25,11 @@ let sentences = [
     },
     {
         "id": 7,
-        "title": "7월 7일은 평창 친구 친정 칠순 잔칫날",
+        "title": "저기 있는 말뚝이 말 맬 말뚝이냐 말 못 맬 말뚝이냐",
     },
     {
         "id": 8,
-        "title": "7월 7일은 평창 친구 친정 칠순 잔칫날",
+        "title": "솔바람이 솔솔 송이버섯이 우수수 떨어지는 선산에 앉아 선선한 바람을 만끽했다",
     },
 
 ];
@@ -135,7 +132,9 @@ function play_next_round(currentRound) {
 function show_result() {
     console.log("결과창");
     console.log(score);
+    window.location.href = "../php/pronRank.php"; 
 }
+
 
 
 // 점수 계산 로직
