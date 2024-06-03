@@ -20,6 +20,7 @@ function startSpeechRecognition() {
     recognition.addEventListener("result", (event) => {
         console.log("음성 인식 결과", event.results);
         const text = event.results[0][0].transcript;
+        text = text.replace(/\s+/g, ''); // 띄어쓰기 제거
         input.value = text; // 음성 입력 결과를 input 창에 표시
         handleSpeechInput(text); // 음성 입력 처리 함수 호출
     });
