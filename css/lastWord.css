@@ -30,8 +30,8 @@ body {
     font-size: 20px; /* 숫자 크기 */
     font-weight: bold;
     position: absolute; /* 또는 fixed */
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 50px;
 }
 
 .keyWord {
