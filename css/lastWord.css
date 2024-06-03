@@ -59,4 +59,5 @@ body {
     outline: none;
     padding-left: 10px;
     background-color: var(--body-color);
+    color: var(--first-color);
 }
