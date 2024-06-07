@@ -12,9 +12,11 @@ function ranking() {
 // 다음 페이지로 이동하는 함수
 function moveToNextPage(currentUrl) {
     if (currentUrl.includes("lastWordRule.html")) {
-        window.location.href = "lastWordGame.html"; // 끝말잇기 게임 페이지로 이동
+        window.location.href = "lastWordGame.html";
     } else if (currentUrl.includes("pronRule.html")) {
-        window.location.href = "../html/pronGame.html"; // 발음 게임 페이지로 이동
+        window.location.href = "pronGame.html"; 
+    } else if (currentUrl.includes("pronRank.php")) {
+        window.location.href = "../index.html"; 
     } else {
         console.log("현재 페이지에 맞는 다음 이동 페이지가 정의되지 않았습니다.");
     }
@@ -23,11 +25,15 @@ function moveToNextPage(currentUrl) {
 // 이전 페이지로 이동하는 함수
 function moveToPrevPage(currentUrl) {
     if (currentUrl.includes("nameChange.html")) {
-        window.location.href = "http://localhost/pleaseSay/index.html";
-    } else if (currentUrl.includes("pronRule.html")) {
-        window.location.href = "http://localhost/pleaseSay/html/gameChoice.html"; // 발음 게임 페이지로 이동
+        window.location.href = "index.html";
     } else if (currentUrl.includes("gameChoice.html")) {
-        window.location.href = "http://localhost/pleaseSay/html/nameChange.html"; // 발음 게임 페이지로 이동
+        window.location.href = "nameChange.html"; 
+    } else if (currentUrl.includes("pronRule.html")) {
+        window.location.href = "gameChoice.html";
+    } else if (currentUrl.includes("lastWordRule.html")) {
+        window.location.href = "gameChoice.html"; 
+    }else if (currentUrl.includes("rankGameChoice.html")) {
+        window.location.href = "../index.html";    
     }else {
         console.log("현재 페이지에 맞는 다음 이동 페이지가 정의되지 않았습니다.");
     }
@@ -41,7 +47,7 @@ function lastGameMove(currentUrl) {
         setTimeout(function() {
             endGame.dispatchEvent(new MouseEvent('mouseout'));
             window.location.href = "lastWordRule.html"; 
-        }, 1000); // 1초 후에 마우스 아웃 이벤트 발생
+        }, 1000);
 
     } else if (currentUrl.includes("rankGameChoice.html")) {
         window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php"; 
@@ -96,11 +102,13 @@ function handleVoiceRecognition(event) {
         // 말풍선 표시
         questionExp.style.display = 'none';
     } else if (transcript === "그만하기") {
-        window.location.href = "../html/gameChoice.html"; // 게임 선택 페이지로 이동
+        window.location.href = "gameChoice.html"; // 게임 선택 페이지로 이동
     } else if (transcript === "끝말잇기" || transcript === "끝말 잇기" ) {        
         lastGameMove(currentUrl);
     } else if (transcript === "발음테스트" || transcript === "발음 테스트" ) {        
         pronGameMove(currentUrl);
+    } else if (transcript === "발음테스트" || transcript === "발음 테스트" ) {        
+            
     }  else {
         console.log("다른 단어를 말해도 녹음 유지됨.");
         if (window.location.href == "../html/nameChange.html") {
