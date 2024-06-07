@@ -1,6 +1,7 @@
 .nameChange {
-    height: 100vh;
+    /* height: 100vh; */
     overflow: hidden;
+    margin-top: 300px;
 
 }
 
@@ -14,17 +15,18 @@
 
 .title_container {
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
     background-color: var(--body-color);
 
-    line-height: 400px;
+    /* line-height: 400px; */
     text-align: center;
+    margin-bottom: 100px;
 }
 
 
 h1 {
     font-size: var(--h1-font-size);
-    padding-bottom: 100px;
+    /* padding-bottom: 100px; */
 }
 
 
@@ -32,21 +34,29 @@ input[type="text"] {
     outline: none;
     border: none;
     background-color: var(--body-color);
-    height: 50px;
+    height: 100%;
     text-align: center;
-    font-size: var(--normal-font-size);
+    font-size: 9rem;
     color: white;
 }
+
+input::placeholder {
+    font-size: 1.2rem;
+}
+
 #userid{
     border: 3px solid var(--first-color);
-    border-radius: 100px;
-    width: 50vw;
-    height: 200px;
+    border-radius: 300px;
+    width: 1000px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 
+}
+#submitBtn{
+    display: none;
 }
 
 .confirmName {
