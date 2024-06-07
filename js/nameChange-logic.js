@@ -39,7 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // 두 번째 음성 인식: 확인 메시지에 대한 응답 처리
             if (spokenText === '예' || spokenText === '네' || spokenText === '다음') {
                 localStorage.setItem('userName', nicknameSpan.textContent);
-                window.location.href = '../html/gameChoice.html';
+                
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '../php/nameChangeLogic.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // PHP 스크립트의 처리가 완료된 후에 다음 페이지로 이동
+                        window.location.href = '../html/gameChoice.html';
+                    }
+                };
+                xhr.send(`user_id=${nicknameSpan.textContent}`);
                 
             } else if (spokenText === '아니오' || spokenText === '아니요' ) {
                 userIdInput.value = '';

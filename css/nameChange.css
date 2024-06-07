@@ -48,6 +48,9 @@ input[type="text"] {
     overflow: hidden;
 
 }
+#submitBtn{
+    display: none;
+}
 
 .confirmName {
     position: fixed;

@@ -6,6 +6,10 @@ $uid = $_POST['user_id'];
 // 디비접속
 include_once("./db_conn.php");
 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
 // 중복 체크를 위한 쿼리
 $check_query = "SELECT * FROM login_form WHERE id = '$uid'";
 $result = mysqli_query($conn, $check_query);
