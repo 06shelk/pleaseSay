@@ -13,7 +13,7 @@
 
 
     /* font 크기는 점차 수정할 생각 */
-    --h1-font-size: 4rem;
+    --h1-font-size: 6rem;
     --h2-font-size: 3rem;
     --h3-font-size: 2.5rem;
     --normal-font-size: 2rem;
@@ -52,7 +52,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200vh;
+    /* height: 200vh; */
 }
 
 /* 도움말 css */
@@ -140,9 +140,9 @@ body {
 
 .title_container {
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
     background-color: var(--body-color);
     font-size: var(--h1-font-size);
-    line-height: 200px;
+    /* line-height: 200px; */
     text-align: center;
 }
