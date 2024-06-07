@@ -85,7 +85,7 @@ function handleSpeechInput(text) {
                             }
 
                             timeCheck();
-                            start = setInterval(timeCheck, 1000);
+                            startTimer();
                         })
                         .catch(error => {
                             console.log(error);
@@ -119,9 +119,8 @@ function handleInvalidWord() {
     
     // 잘못된 입력이 있을 때, 새로운 단어를 제공하지 않고 타이머를 다시 시작합니다.
     timeCheck();
-    start = setInterval(timeCheck, 1000);
+    startTimer();
 }
-
 
 
 function handleNoMatchingWords() {
@@ -151,7 +150,7 @@ function handleNoMatchingWords() {
             }
 
             timeCheck();
-            start = setInterval(timeCheck, 1000);
+            startTimer();
         })
         .catch(error => {
             console.log(error);
