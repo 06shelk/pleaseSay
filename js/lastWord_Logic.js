@@ -1,7 +1,7 @@
 const startWords = ["우리말", "끝말잇기", "게임"];
 const index = Math.floor(Math.random() * startWords.length);
 let word = startWords[index];
-let time = 30;  // 타이머를 120초로 설정
+let time = 30;  // 타이머를 30초로 설정
 let point = 0;
 let wordCount = 0;  // 입력된 단어 수를 추적
 
@@ -18,7 +18,7 @@ let start = null;
 function initGame() {
     keyWord.innerHTML = word;
     pointZone.innerHTML = point;
-    startTimer();
+    startTimer(); // 타이머 시작을 여기서 호출합니다.
 }
 
 // 시간
@@ -55,7 +55,7 @@ function startCountDown() {
             keyWord.textContent = "Game Start!";
             
             setTimeout(() => {
-                initGame();
+                initGame(); // 여기서 바로 initGame()을 호출합니다.
             }, 1000); // 1초 후에 메시지 숨기기
         } else {
             keyWord.innerHTML = count;
