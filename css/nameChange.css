@@ -40,37 +40,39 @@ input[type="text"] {
     color: white;
 }
 
-input::placeholder {
-    font-size: 1.2rem;
-}
 
 #userid{
-    border: 3px solid var(--first-color);
+    border: 8px solid var(--first-color);
     border-radius: 300px;
     width: 1000px;
     height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-
+    overflow: hidden;    
 }
+
+input::placeholder {
+    font-size: var(--h1-font-size);
+}
+
+
 #submitBtn{
     display: none;
 }
 
 .confirmName {
     position: fixed;
-    width: 60vw;
-    height: 50vh;
+    width: 1100px;
+    height: 600px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--body-color);
-    border: 3px solid var(--first-color);
+    border: 10px solid var(--first-color);
     padding: 20px;
     z-index: 1000;
-    border-radius: 5px;
+    border-radius: 30px;
     text-align: center;
 }
 
@@ -85,5 +87,5 @@ input::placeholder {
 }
 
 .choice_name {
-    font-size: var(--h3-font-size);
+    font-size: var(--h1-font-size);
 }

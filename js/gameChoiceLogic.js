@@ -15,14 +15,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
     function handleMouseOver(element) {
         element.style.fontSize = '100px';
-        element.style.width = '600px';
+        element.style.width = '500px';
         element.style.color = '#FF4242';
         element.style.border = '#FF4242 3px solid';
     }
 
     function handleMouseOut(element) {
         element.style.fontSize = '';
-        element.style.width = '500px';
+        element.style.width = '800px';
         element.style.border = '#ffffff 3px solid';
         element.style.color = '#ffffff';
     }

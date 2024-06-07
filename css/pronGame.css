@@ -12,49 +12,41 @@
     align-items: center;
 }
 
-.title_container {
-    width: 100%;
-    height: 200px;
-    background-color: var(--body-color);
-
-    line-height: 300px;
-    text-align: center;
-}
 
 
 .title_container h1 {
     font-size: var( --h1-font-size);
-    padding-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 
 #question {
-    border: 3px solid var(--first-color);
-    border-radius: 15px;
-    width: 1000px;
-    height: 150px;
-    font-size: var(--normal-font-size);
-    padding: 50px;
+    border: 10px solid var(--first-color);
+    border-radius: 30px;
+    width: 1500px;
+    height: 320px;
+    font-size: var(--h2-font-size);
     text-align: center;
-   
+    margin-bottom: 60px;
+    padding: 30px;
 }
 
 textarea {
-    margin-top: 50px;
     background-color: var(--body-color);
     color: var(--first-color);
-
     border: none;
-    width: 500px;
-    height: 150px;
-    font-size: var(--normal-font-size);
+    width: 1500px;
+    height: 240px;
+    font-size: var(--h2-font-size);
+    text-align: center;
 }
 
 
 .round-inner {
-    font-size: var(--normal-font-size);
+    font-size: var(--h2-font-size);
     display: flex;
     align-items: center;
+    margin-bottom: 65px;
 }
 
 #countdown-container {
