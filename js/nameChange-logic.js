@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const userIdInput = document.getElementById('user_id');
     const confirmNameDiv = document.getElementById('confirmName');
     const nicknameSpan = document.getElementById('nickname');
+    const titleContainer = document.querySelector('.title_container h1'); 
+    const originalTitle = titleContainer.innerHTML; // 원래 문장을 저장
 
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = 'ko-KR';
@@ -16,6 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     recognition.onresult = (event) => {
         const spokenText = event.results[0][0].transcript.trim();
+
+        if (spokenText.length > 10) {
+            titleContainer.innerHTML = "입력하신 닉네임이 너무 깁니다.";
+            setTimeout(() => {
+                titleContainer.innerHTML = originalTitle; // 2초 후 원래 문장으로 변경
+                startRecognition(); // 음성 인식을 다시 
+            }, 2000);
+            return;
+        }
         
         if (confirmNameDiv.style.display === 'none') {
             // 첫 번째 음성 인식: 닉네임 설정
