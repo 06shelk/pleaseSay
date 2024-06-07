@@ -6,6 +6,10 @@ body {
     margin: 50px;
 } */
 
+.point{
+    display: none;
+}
+
 
 
 .main{
@@ -53,11 +57,12 @@ body {
     width: 500px;
     height: 50px;
     padding: 20px;
-    font-size: 15px;
+    font-size: var(--h2-font-size);
     border: 3px solid var(--first-color);
     border-radius: 50px;
     outline: none;
     padding-left: 10px;
     background-color: var(--body-color);
     color: var(--first-color);
+    text-align: center;
 }
