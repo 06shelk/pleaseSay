@@ -47,7 +47,7 @@ function lastGameMove(currentUrl) {
         setTimeout(function() {
             endGame.dispatchEvent(new MouseEvent('mouseout'));
             window.location.href = "lastWordRule.html"; 
-        }, 1000); // 1초 후에 마우스 아웃 이벤트 발생
+        }, 1000);
 
     } else if (currentUrl.includes("rankGameChoice.html")) {
         window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php"; 
