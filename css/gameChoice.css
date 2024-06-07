@@ -2,18 +2,29 @@
     height: 100vh;
 }
 
+.title_container {
+    margin-bottom: 200px;
+}
+
 h1 {
     font-size: var(--h1-font-size);
-    padding-bottom: 100px;
 }
 
 .endGame, .PronGame {
-    border: 2px solid var(--first-color);
-    width: 500px;
+    border: 8px solid var(--first-color);
+    width: 800px;
+    height: 200px;
     font-size: var(--h1-font-size);
-    margin: 25px;
     text-align: center;
     padding: 20px;
-    border-radius: 50px;
+    border-radius: 200px;
     cursor: pointer;
+}
+
+.endGame {
+    margin-bottom: 100px;
+}
+
+.PronGame {
+    margin-bottom: 180px;
 }

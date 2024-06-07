@@ -1,68 +1,60 @@
 body {
     text-align: center;
 }
-/* .title {
-    font-size: var(--h1-font-size);
-    margin: 50px;
-} */
 
 .point{
     display: none;
 }
 
 
-
-.main{
-    width: 100%;
-    height: calc(100vh - 300px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 50px;
+.container {
+   height: 100vh;
 }
+
+
+
+.title_container h1 {
+    font-size: var( --h1-font-size);
+    margin-bottom: 211px;
+}
+
 
 .timeZone {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px; /* 원의 크기 */
-    height: 70px; /* 원의 크기 */
-    border: solid white 3px;
+    width: 180px; /* 원의 크기 */
+    height: 180px; /* 원의 크기 */
+    border: solid var(--first-color) 10px;
     border-radius: 50%;
-    /* background-color: lightgray;  */
-    font-size: 20px; /* 숫자 크기 */
+    font-size: var(--h1-font-size);
     font-weight: bold;
-    position: absolute; /* 또는 fixed */
-    top: 50px;
-    right: 50px;
+    position: fixed;
+    top: 79px;
+    right: 140px;
 }
 
 .keyWord {
-    border: 3px solid var(--first-color);
-    border-radius: 50px;
+    border: 10px solid var(--first-color);
+    border-radius: 200px;
     height: 50px;
-    padding: 20px; /* 내부 여백 추가 */
-    width: 50%;
-    display: flex;
-    justify-content: center; /* 가로 중앙 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-    margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
-    font-size: var(--h2-font-size);
+    width: 1200px;
+    height: 200px;
+    line-height: 200px;
+    margin-bottom: 110px;
+    font-size: var(--h1-font-size);
 }
 
 #word {
-    /* margin-top: 20px; */
-    margin: 50px;
-    width: 500px;
-    height: 50px;
-    padding: 20px;
-    font-size: var(--h2-font-size);
-    border: 3px solid var(--first-color);
-    border-radius: 50px;
+    width: 800px;
+    height: 200px;
+    line-height: 200px;
+    font-size: var(--h1-font-size);
+    border: 10px solid var(--first-color);
+    border-radius: 200px;
     outline: none;
-    padding-left: 10px;
     background-color: var(--body-color);
     color: var(--first-color);
     text-align: center;
+    margin-bottom: 150px;
 }
