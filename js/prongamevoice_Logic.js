@@ -26,8 +26,15 @@ function checkCompatibility() {
                 const text = event.results[0][0].transcript;
                 document.getElementById("speech_result").value = text;
 
-                const titleElement = document.getElementById("question");
+                if (text.includes("그만하기")) {
+                    console.log("게임 종료");
+                    recognition.stop();
+                    window.location.href = "http://localhost/pleaseSay/html/gameChoice.html";
+                    return;
+                }
 
+
+                const titleElement = document.getElementById("question");
                 const inputText = text.toLowerCase().split(' ').join('');
             
 
