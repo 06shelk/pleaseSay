@@ -60,6 +60,6 @@
     <img src="../img/GoBackIcon.svg" alt="">
     돌아가기
 </div>
-
+<script src="../js/voiceApi.js"></script>
 </body>
 </html>
