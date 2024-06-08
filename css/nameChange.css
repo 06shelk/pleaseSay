@@ -1,7 +1,7 @@
 .nameChange {
     /* height: 100vh; */
     overflow: hidden;
-    margin-top: 300px;
+    margin-top: 200px;
 
 }
 
@@ -84,6 +84,9 @@ input::placeholder {
     align-items: center;
     justify-content: space-around;
     font-size: var(--h1-font-size);
+}
+.confirmName_text p, #nickname{
+    font-family: 'HakgyoansimDoldamB';
 }
 
 .choice_name {
