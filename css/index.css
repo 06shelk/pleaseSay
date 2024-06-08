@@ -16,10 +16,17 @@
 
 .ex {
     width: 1330px;
-    height: 500px;
+    height: 2103px;
     border: 3px solid var(--first-color);
-    margin: 144px 295px 291px 295px;
+    margin-left: 295px;
+    margin-right: 295px;
+    margin-top: 144px;
+    margin-bottom: 238px;
     border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ex h2 {
@@ -35,8 +42,8 @@
 .title-buttons {
     display: flex;
     justify-content: space-between;
-    width: 80%;
-    margin-bottom: 185px;
+    width: 1330px;
+    margin-bottom: 238px;
 }
 
 .ranking {
