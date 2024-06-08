@@ -34,6 +34,10 @@ function moveToPrevPage(currentUrl) {
         window.location.href = "gameChoice.html"; 
     }else if (currentUrl.includes("rankGameChoice.html")) {
         window.location.href = "../index.html";    
+    }else if (currentUrl.includes("lastWordRank.php")) {
+        window.location.href = "../html/rankGameChoice.html";    
+    }else if (currentUrl.includes("pronRank.php")) {
+        window.location.href = "../html/rankGameChoice.html";    
     }else {
         console.log("현재 페이지에 맞는 다음 이동 페이지가 정의되지 않았습니다.");
     }
@@ -87,28 +91,14 @@ function handleVoiceRecognition(event) {
         moveToNextPage(currentUrl); // 다음 페이지로 이동
     } else if (transcript === "이전") {
         moveToPrevPage(currentUrl); // 다음 페이지로 이동
-    } else if (transcript === "도움말") {
-        // 도움말 아이콘 표시 처리
-        var icon = document.getElementById('questionIcon');
-        var questionExp = document.getElementById('questionExp');
-        icon.src = '../img/questionIconHover.png'; // 아이콘 이미지 변경
-        questionExp.style.display = 'block'; // 말풍선 표시
-    } else if (transcript === "종료") {
-        // 도움말 아이콘 종료 처리
-        var icon = document.getElementById('questionIcon');
-        var questionExp = document.getElementById('questionExp');
-        // 아이콘 이미지 변경
-        icon.src = '../img/questionIcon.png';
-        // 말풍선 표시
-        questionExp.style.display = 'none';
     } else if (transcript === "그만하기") {
         window.location.href = "gameChoice.html"; // 게임 선택 페이지로 이동
     } else if (transcript === "끝말잇기" || transcript === "끝말 잇기" ) {        
         lastGameMove(currentUrl);
     } else if (transcript === "발음테스트" || transcript === "발음 테스트" ) {        
         pronGameMove(currentUrl);
-    } else if (transcript === "발음테스트" || transcript === "발음 테스트" ) {        
-            
+    } else if (transcript === "돌아가기" || transcript === "도라가기" ) {        
+        ranking();
     }  else {
         console.log("다른 단어를 말해도 녹음 유지됨.");
         if (window.location.href == "../html/nameChange.html") {
