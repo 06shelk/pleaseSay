@@ -14,42 +14,45 @@ window.addEventListener('DOMContentLoaded', function() {
     const pronGame = document.querySelector('.PronGame');
 
     function handleMouseOver(element) {
-        element.style.fontSize = '100px';
-        element.style.width = '500px';
+        element.style.width = '800px';
         element.style.color = '#FF4242';
-        element.style.border = '#FF4242 3px solid';
+        element.style.borderColor = '#FF4242';
     }
 
     function handleMouseOut(element) {
         element.style.fontSize = '';
-        element.style.width = '800px';
-        element.style.border = '#ffffff 3px solid';
+        // element.style.width = '600px';
+        element.style.borderColor = '#ffffff';
         element.style.color = '#ffffff';
     }
 
     // endGame에 마우스를 올렸을 때의 이벤트 처리
     endGame.addEventListener('mouseover', function() {
         handleMouseOver(this);
+        pronGame.style.width = '600px';
         pronGame.style.color = 'black';
-        pronGame.style.border = 'black 3px solid';
+        pronGame.style.borderColor = 'black';
     });
 
     endGame.addEventListener('mouseout', function() {
         handleMouseOut(this);
+        pronGame.style.width = '800px';
         pronGame.style.color = '';
-        pronGame.style.border = '#ffffff 3px solid';
+        pronGame.style.borderColor = '#ffffff';
     });
 
     // PronGame에 마우스를 올렸을 때의 이벤트 처리
     pronGame.addEventListener('mouseover', function() {
         handleMouseOver(this);
+        endGame.style.width = '600px';
         endGame.style.color = 'black';
-        endGame.style.border = 'black 3px solid';
+        endGame.style.borderColor = 'black';
     });
 
     pronGame.addEventListener('mouseout', function() {
         handleMouseOut(this);
+        endGame.style.width = '800px';
         endGame.style.color = '';
-        endGame.style.border = '#ffffff 3px solid';
+        endGame.style.borderColor = '#ffffff';
     });
 });

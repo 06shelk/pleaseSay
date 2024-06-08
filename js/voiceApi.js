@@ -54,7 +54,12 @@ function lastGameMove(currentUrl) {
         }, 1000);
 
     } else if (currentUrl.includes("rankGameChoice.html")) {
-        window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php"; 
+        const endGame = document.querySelector('.endGame');
+        endGame.dispatchEvent(new MouseEvent('mouseover'));
+        setTimeout(function() {
+            endGame.dispatchEvent(new MouseEvent('mouseout'));
+            window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php"; 
+        }, 1000);
     }
 }
 
@@ -83,7 +88,7 @@ function handleVoiceRecognition(event) {
     var currentUrl = window.location.href; // 현재 URL을 변수에 저장
     console.log(currentUrl);
 
-    if (transcript === "게임고르기" || transcript === "게임 고르기") {
+    if (transcript === "게임시작하기" || transcript === "게임 시작하기") {
         startGame(); // 게임 선택 페이지로 이동
     } else if (transcript === "랭킹보기" || transcript === "랭킹 보기") {
         ranking(); // 랭킹 페이지로 이동
