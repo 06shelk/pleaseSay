@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/favicon.png" type="image/x-icon"> 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/gameChoice.css">
     <title>말로 하세요</title>
@@ -16,7 +17,18 @@
         <div class="endGame" onclick="lastWord()">끝말잇기</div>
         <div class="PronGame" onclick="pron()">발음테스트</div>
     </div>
+
+   <!-- 마이크 -->
+   <div id="questionExp" class="questionExp">
+        <p>게임 설명</p>
+        <p id="gameDescription">게임 설명</p>
+        <p id="exp"></p>
+    </div>
+    <div class="questionIcon">
+        <img src="../img/questionIcon.png" class="icon" id="questionIcon">
+    </div>
     
+    <!-- js -->
     <script src="../js/gameChoiceLogic.js"></script>
     <script src="../js/levenshteinDistance.js"></script>
     <script src="../js/voiceApi.js"></script>

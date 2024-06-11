@@ -90,3 +90,53 @@ body {
     /* line-height: 200px; */
     text-align: center;
 }
+
+/* 도움말 css */
+.questionIcon {
+    position: fixed;
+    z-index: 99;
+	position: fixed;
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+    bottom: 0;
+    right: 0;
+}
+
+.questionIcon img {
+    width: 70px;
+    height: 70px;
+}
+
+.questionExp {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 110px;
+    margin: 20px;
+    width: 400px;
+    height: 200px;
+    border-radius: 30px;
+    background-color: #D9D9D9;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.9rem;
+    color: #000000;
+    font-weight: 200;
+}
+
+.questionExp::after {
+    content: "";
+    position: absolute;
+    bottom: 20px; /* 꼬리의 위치 조정 */
+    right: -18px; /* 꼬리의 위치 조정 */
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #D9D9D9;
+}
+
+.questionExp p {
+    padding: 10px;
+}
