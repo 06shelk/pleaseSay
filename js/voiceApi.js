@@ -146,7 +146,9 @@ function handleVoiceRecognition(event) {
             break;
         case "돌아가기":
             if (closestDistance <= 3) {
-                window.location.href = "../index.html"; // 랭킹 페이지에서 처음화면으로
+                if(currentUrl.includes("pronRank.php") || currentUrl.includes("lastWordRank.php")) {
+                    window.location.href = "../index.html"; // 랭킹 페이지에서 처음화면으로
+                }
             }
             break;
         default:
