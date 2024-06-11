@@ -1,5 +1,5 @@
 function next() {
-    window.location.href = "http://localhost/pleaseSay/html/gameChoice.html";
+    window.location.href = "../html/gameChoice.html";
 }
 function no() {
     const userIdInput = document.getElementById('user_id');
