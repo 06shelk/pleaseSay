@@ -70,9 +70,10 @@ function timeCheck() {
 //끝났을때 alert창으로 결과 보여줌
 function endGame() {
     input.setAttribute("disabled", true);
-    alert(`Game Over \n점수: ${point}`);
+    // alert(`Game Over \n점수: ${point}`);
+    localStorage.setItem("Wordgame", point);
     setTimeout(() => {
-        location.reload();
+        window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php";
     }, 1000); // 1초 후에 페이지 새로고침
 }
 
