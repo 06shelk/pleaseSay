@@ -50,8 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // 새 음성 인식을 시작하여 사용자의 "예" 또는 "아니오" 응답을 기다림
             startRecognition();
         } else {
+            console.log(spokenText);
             // 두 번째 음성 인식: 확인 메시지에 대한 응답 처리
-            if (levenshteinDistance("네", spokenText) <= 1 || levenshteinDistance("다음", spokenText) <= 1) {
+            if (levenshteinDistance("네", spokenText) <= 1 || levenshteinDistance("다음", spokenText) <= 2) {
                 localStorage.setItem('userName', nicknameSpan.textContent);
                 console.log(spokenText);
                 // const xhr = new XMLHttpRequest();

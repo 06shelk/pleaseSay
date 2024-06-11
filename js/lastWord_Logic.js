@@ -20,6 +20,10 @@ window.onload = function() {
     startCountDown();
 };
 
+function goBack() {
+    window.location.href = '../html/gameChoice.html'
+    console.log("왜안대?");
+}
 
 // 숫자 카운트 다운 함수
 function startCountDown() {
@@ -73,7 +77,7 @@ function endGame() {
     // alert(`Game Over \n점수: ${point}`);
     localStorage.setItem("Wordgame", point);
     setTimeout(() => {
-        window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php";
+        window.location.href = "../php/lastWordRank.php";
     }, 1000); // 1초 후에 페이지 새로고침
 }
 

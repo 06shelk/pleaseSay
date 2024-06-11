@@ -1,5 +1,7 @@
 // inputValue.js
-
+function goBack() {
+    window.location.href = '../html/gameChoice.html'
+}
 let recognition = null;
 
 function checkCompatibility() {
