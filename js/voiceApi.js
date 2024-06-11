@@ -87,28 +87,74 @@ function handleVoiceRecognition(event) {
     var transcript = event.results[0][0].transcript.toLowerCase(); // 인식된 음성을 소문자로 변환
     var currentUrl = window.location.href; // 현재 URL을 변수에 저장
     console.log(currentUrl);
+    console.log(transcript);
+    
+    // 명령어와 각 명령어의 유사도 계산
+    const commands = {
+        "게임 시작하기": levenshteinDistance("게임 시작하기", transcript),
+        "랭킹 보기": levenshteinDistance("랭킹 보기", transcript),
+        "다음": levenshteinDistance("다음", transcript),
+        "이전": levenshteinDistance("이전", transcript),
+        "그만하기": levenshteinDistance("그만하기", transcript),
+        "끝말 잇기": levenshteinDistance("끝말 잇기", transcript),
+        "발음 테스트": levenshteinDistance("발음 테스트", transcript),
+        "돌아가기": levenshteinDistance("돌아가기", transcript)
+    };
 
-    if (transcript === "게임시작하기" || transcript === "게임 시작하기") {
-        startGame(); // 게임 선택 페이지로 이동
-    } else if (transcript === "랭킹보기" || transcript === "랭킹 보기") {
-        ranking(); // 랭킹 페이지로 이동
-    } else if (transcript === "다음") {
-        moveToNextPage(currentUrl); // 다음 페이지로 이동
-    } else if (transcript === "이전") {
-        moveToPrevPage(currentUrl); // 다음 페이지로 이동
-    } else if (transcript === "그만하기") {
-        window.location.href = "gameChoice.html"; // 게임 선택 페이지로 이동
-    } else if (transcript === "끝말잇기" || transcript === "끝말 잇기" ) {        
-        lastGameMove(currentUrl);
-    } else if (transcript === "발음테스트" || transcript === "발음 테스트" ) {        
-        pronGameMove(currentUrl);
-    } else if (transcript === "돌아가기" || transcript === "도라가기" ) {        
-        ranking();
-    }  else {
-        console.log("다른 단어를 말해도 녹음 유지됨.");
-        if (window.location.href == "../html/nameChange.html") {
-            alert("확인")
-        }
+    // 가장 유사한 명령어를 찾음
+    const closestCommand = Object.keys(commands).reduce((a, b) => commands[a] < commands[b] ? a : b);
+
+    // 가장 유사한 명령어의 유사도
+    const closestDistance = commands[closestCommand];
+    console.log(closestDistance);
+    // 가장 유사한 명령어에 따른 동작 실행
+    switch (closestCommand) {
+        case "게임 시작하기":
+            if (closestDistance <= 3) {
+                startGame(); // 게임 선택 페이지로 이동
+            }
+            break;
+        case "랭킹 보기":
+            if (closestDistance <= 3) {
+                ranking(); // 랭킹 페이지로 이동
+            }
+            break;
+        case "다음":
+            if (closestDistance <= 3) {
+                moveToNextPage(currentUrl); // 다음 페이지로 이동
+            }
+            break;
+        case "이전":
+            if (closestDistance <= 3) {
+                moveToPrevPage(currentUrl); // 이전 페이지로 이동
+            }
+            break;
+        case "그만하기":
+            if (closestDistance <= 3) {
+                window.location.href = "gameChoice.html"; // 게임 선택 페이지로 이동
+            }
+            break;
+        case "끝말 잇기":
+            if (closestDistance <= 3) {
+                lastGameMove(currentUrl); // 끝말잇기 페이지로 이동
+            }
+            break;
+        case "발음 테스트":
+            if (closestDistance <= 3) {
+                pronGameMove(currentUrl); // 발음 테스트 페이지로 이동
+            }
+            break;
+        case "돌아가기":
+            if (closestDistance <= 3) {
+                ranking(); // 랭킹 페이지로 이동
+            }
+            break;
+        default:
+            console.log("다른 단어를 말해도 녹음 유지됨.");
+            if (window.location.href == "../html/nameChange.html") {
+                alert("확인");
+            }
+            break;
     }
 }
 

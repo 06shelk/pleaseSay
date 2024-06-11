@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끝말잇기 게임</title>
+    <link rel="icon" href="../img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/lastWord.css">
     
@@ -33,10 +34,19 @@
         </div>
     </div>
 
-    <!-- <script src="./speechRecognition.js"></script> -->
-    <script src="../js/lastWord_Speech_Logic.js"></script>
 
-    <!-- <script src="./game_원본.js"></script> -->
+    <!-- 마이크 -->
+    <div id="questionExp" class="questionExp">
+        <p>게임 설명</p>
+        <p id="gameDescription">게임 설명</p>
+        <p id="exp"></p>
+    </div>
+    <div class="questionIcon">
+        <img src="../img/questionIcon.png" class="icon" id="questionIcon">
+    </div>
+
+    <!-- js -->
+    <script src="../js/lastWord_Speech_Logic.js"></script>
     <script src="../js/lastWord_Logic.js"></script>
     <script src="../js/hangul-tools.js"></script>
 </body>
