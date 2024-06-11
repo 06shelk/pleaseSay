@@ -172,4 +172,5 @@ function updateScore(inputText, titleText) {
     score += similarityScore;
     document.getElementById("scoreText").innerHTML = score;
     console.log("현재 스코어: " + score);
+    localStorage.setItem("Prongame",score)
 }

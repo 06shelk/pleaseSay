@@ -103,7 +103,7 @@ function handleVoiceRecognition(event) {
     } else if (transcript === "발음테스트" || transcript === "발음 테스트" ) {        
         pronGameMove(currentUrl);
     } else if (transcript === "돌아가기" || transcript === "도라가기" ) {        
-        ranking();
+        window.location.href = "../index.html";
     }  else {
         console.log("다른 단어를 말해도 녹음 유지됨.");
         if (window.location.href == "../html/nameChange.html") {
