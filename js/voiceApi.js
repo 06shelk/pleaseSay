@@ -146,7 +146,7 @@ function handleVoiceRecognition(event) {
             break;
         case "돌아가기":
             if (closestDistance <= 3) {
-                ranking(); // 랭킹 페이지로 이동
+                window.location.href = "../index.html"; // 랭킹 페이지에서 처음화면으로
             }
             break;
         default:

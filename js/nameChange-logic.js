@@ -1,3 +1,10 @@
+function next() {
+    window.location.href = "http://localhost/pleaseSay/html/gameChoice.html";
+}
+function no() {
+    
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const userIdInput = document.getElementById('user_id');
     const confirmNameDiv = document.getElementById('confirmName');
@@ -40,16 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (spokenText === '예' || spokenText === '네' || spokenText === '다음') {
                 localStorage.setItem('userName', nicknameSpan.textContent);
                 
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', '../php/nameChangeLogic.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        // PHP 스크립트의 처리가 완료된 후에 다음 페이지로 이동
-                        window.location.href = '../html/gameChoice.html';
-                    }
-                };
-                xhr.send(`user_id=${nicknameSpan.textContent}`);
+                // const xhr = new XMLHttpRequest();
+                // xhr.open('POST', '../php/nameChangeLogic.php', true);
+                // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                // xhr.onload = function () {
+                //     if (xhr.status === 200) {
+                //         // PHP 스크립트의 처리가 완료된 후에 다음 페이지로 이동
+                //         window.location.href = '../html/gameChoice.html';
+                //     }
+                // };
+                // xhr.send(`user_id=${nicknameSpan.textContent}`);
                 
             } else if (spokenText === '아니오' || spokenText === '아니요' ) {
                 userIdInput.value = '';
