@@ -1,10 +1,10 @@
 // 클릭이벤트 처리
 function lastWord() {
-    window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php";
+    window.location.href = "../html/lastWordRule.html";
 }
 
 function pron() {
-    window.location.href = "http://localhost/pleaseSay/php/pronRank.php";
+    window.location.href = "../html/pronRule.html";
 }
 
 
