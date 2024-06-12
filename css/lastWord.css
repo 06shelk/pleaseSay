@@ -23,8 +23,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 180px; /* 원의 크기 */
-    height: 180px; /* 원의 크기 */
+    width: 180px;
+    height: 180px;
     border: solid var(--first-color) 10px;
     border-radius: 50%;
     font-size: var(--h1-font-size);

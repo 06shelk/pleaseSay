@@ -3,20 +3,16 @@
   }
 
 .title-img {
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
 }
 
 .title-img img {
     width: 100%;
-    /* border: red solid 3px; */
-
 }
 
 .ex {
     width: 1310px;
-    /* height: 2083px; */
     border: 10px solid var(--first-color);
     margin-left: 295px;
     margin-right: 295px;
@@ -25,14 +21,12 @@
     border-radius: 20px;
 
     display: flex;
-    /* justify-content: center; */
     align-items: center;
 }
 
 .ex h2 {
     font-size: var(--h1-font-size);
     padding-top: 300px;
-    /* padding-bottom: 50px; */
 } 
 
 .ex p {
