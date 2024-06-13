@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isRecognizing) {
             recognition.start();
             isRecognizing = true;
+            if (currentUrl.includes("index.html")) { 
+                icon.src = './img/mic.gif';
+            }else {
+                icon.src = '../img/mic.gif'; 
+            }
         }
     };
 
@@ -34,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 titleContainer.innerHTML = originalTitle; // 2초 후 원래 문장으로 변경
                 startRecognition(); // 음성 인식을 다시 
+                if (currentUrl.includes("index.html")) { 
+                    icon.src = './img/mic.gif';
+                }else {
+                    icon.src = '../img/mic.gif'; 
+                }
             }, 2000);
             return;
         }
@@ -49,6 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmNameDiv.style.display = 'flex';
             // 새 음성 인식을 시작하여 사용자의 "예" 또는 "아니오" 응답을 기다림
             startRecognition();
+            if (currentUrl.includes("index.html")) { 
+                icon.src = './img/mic.gif';
+            }else {
+                icon.src = '../img/mic.gif'; 
+            }
         } else {
             console.log(spokenText);
             // 두 번째 음성 인식: 확인 메시지에 대한 응답 처리
@@ -83,6 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     recognition.onend = () => {
+        const icon = document.getElementById('questionIcon');
+        if (currentUrl.includes("index.html")) { 
+            icon.src = './img/mic_none.png';
+        }else {
+            icon.src = '../img/mic_none.png'; 
+        }
         isRecognizing = false;
         startRecognition(); // 음성 인식 종료 시 다시 시작
     };
