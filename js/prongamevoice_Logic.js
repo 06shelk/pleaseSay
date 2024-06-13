@@ -15,9 +15,9 @@ function checkCompatibility() {
                 alert("You cannot use speech api.");
             }
 
-            // recognition.addEventListener("speechstart", () => {
-            //     console.log("speech Start");
-            // });
+            recognition.addEventListener("speechstart", () => {
+                console.log("speech Start");
+            });
 
             recognition.addEventListener("speechend", () => {
                 console.log("speech End");

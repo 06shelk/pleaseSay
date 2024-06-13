@@ -3,7 +3,6 @@ function startGame() {
     window.location.href = "html/nameChange.html";
 }
 
-
 // 랭킹 페이지로 이동하는 함수
 function ranking() {
     window.location.href = "html/rankGameChoice.html";
@@ -32,13 +31,13 @@ function moveToPrevPage(currentUrl) {
         window.location.href = "gameChoice.html";
     } else if (currentUrl.includes("lastWordRule.html")) {
         window.location.href = "gameChoice.html"; 
-    }else if (currentUrl.includes("rankGameChoice.html")) {
+    } else if (currentUrl.includes("rankGameChoice.html")) {
         window.location.href = "../index.html";    
-    }else if (currentUrl.includes("lastWordRank.php")) {
+    } else if (currentUrl.includes("lastWordRank.php")) {
         window.location.href = "../html/rankGameChoice.html";    
-    }else if (currentUrl.includes("pronRank.php")) {
+    } else if (currentUrl.includes("pronRank.php")) {
         window.location.href = "../html/rankGameChoice.html";    
-    }else {
+    } else {
         console.log("현재 페이지에 맞는 다음 이동 페이지가 정의되지 않았습니다.");
     }
 }
@@ -52,7 +51,6 @@ function lastGameMove(currentUrl) {
             endGame.dispatchEvent(new MouseEvent('mouseout'));
             window.location.href = "lastWordRule.html"; 
         }, 1000);
-
     } else if (currentUrl.includes("rankGameChoice.html")) {
         const endGame = document.querySelector('.endGame');
         endGame.dispatchEvent(new MouseEvent('mouseover'));
@@ -146,7 +144,7 @@ function handleVoiceRecognition(event) {
             break;
         case "돌아가기":
             if (closestDistance <= 3) {
-                if(currentUrl.includes("pronRank.php") || currentUrl.includes("lastWordRank.php")) {
+                if (currentUrl.includes("pronRank.php") || currentUrl.includes("lastWordRank.php")) {
                     window.location.href = "../index.html"; // 랭킹 페이지에서 처음화면으로
                 }
             }
@@ -160,21 +158,13 @@ function handleVoiceRecognition(event) {
     }
 }
 
-
-// 페이지 로드 시 음성 인식 시작
 window.addEventListener('DOMContentLoaded', function() {
-    var recognition = new webkitSpeechRecognition(); // 음성 인식 객체 생성
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)(); // 음성 인식 객체 생성
     recognition.lang = "ko-KR"; // 한국어 설정
 
     recognition.onstart = function() {
         console.log("음성 인식이 시작되었습니다.");
-        // 이미지 변경
-        const icon = document.getElementById('questionIcon');
-        if (currentUrl.includes("index.html")) { 
-            icon.src = './img/mic.gif';
-        }else {
-            icon.src = '../img/mic.gif'; 
-        }
+        updateMicIcon(true);
     };
 
     recognition.onresult = function(event) {
@@ -186,14 +176,8 @@ window.addEventListener('DOMContentLoaded', function() {
     };
 
     recognition.onend = function() {
-        const icon = document.getElementById('questionIcon');
-        if (currentUrl.includes("index.html")) { 
-            icon.src = './img/mic_none.png';
-        }else {
-            icon.src = '../img/mic_none.png'; 
-        }
-        
         console.log("음성 인식이 중지되었습니다.");
+        updateMicIcon(false);
         recognition.start(); // 녹음이 중지되면 다시 시작
     };
 
