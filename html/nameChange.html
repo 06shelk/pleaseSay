@@ -24,9 +24,7 @@
                 <button type="submit" id="submitBtn">Submit</button>
             </form>
 
-
             <div id="confirmName" class="confirmName" style="display: none;">
-            <!-- <div id="confirmName" class="confirmName" > -->
                 <div class="confirmName_text">
                     <div>
                         <p>정말로 닉네임을</p>
@@ -42,16 +40,20 @@
     </div>
     
     <!-- 마이크 -->
-   <div id="questionExp" class="questionExp">
+    <div id="questionExp" class="questionExp">
         <p>게임 설명</p>
-        <p id="gameDescription">게임 설명</p>
-        <p id="exp"></p>
+        <p id="gameDescription"> 이전 화면으로 가고 싶다면 
+            <br>“이전”을 말하고
+            <br>다음 화면으로 가고 싶다면
+            <br>“다음”을 말하며
+            <br>게임을 진행하세요</p>
     </div>
     <div class="questionIcon">
-        <img src="../img/questionIcon.png" class="icon" id="questionIcon">
+        <img src="../img/mic.gif" class="icon" id="questionIcon">
     </div>
-
     <!-- js -->
+    <script src="../js/levenshteinDistance.js"></script>
+    <script src="../js/question-logic.js"></script>
     <script src="../js/nameChange-logic.js"></script>
 </body>
 </html>

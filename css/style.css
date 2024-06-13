@@ -20,8 +20,6 @@
 
     --gray: #D9D9D9;
 
-
-    /* font 크기는 점차 수정할 생각 */
     --h1-font-size: 6rem;
     --h2-font-size: 4rem;
     --h3-font-size: 2.5rem;
@@ -55,12 +53,10 @@ body {
     align-items: center;
 }
 
-/* 가운데 정렬 */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: 200vh; */
 }
 
 .red-title {
@@ -79,6 +75,11 @@ body {
     text-align: center;
     font-size: var(--h2-font-size);
     color: var(--first-color); 
+    cursor: pointer;
+}
+
+.goBackButton p {
+    cursor: pointer;
 }
 
 
@@ -87,7 +88,6 @@ body {
     margin-top: 100px;
     background-color: var(--body-color);
     font-size: var(--h1-font-size);
-    /* line-height: 200px; */
     text-align: center;
 }
 
@@ -97,25 +97,25 @@ body {
     z-index: 99;
 	position: fixed;
     width: 100px;
-    height: 100px;
-    margin: 30px;
+    height: 70px;
+    margin: 50px;
     bottom: 0;
     right: 0;
 }
 
 .questionIcon img {
-    width: 70px;
-    height: 70px;
+    width: 96px;
+    height: 54px;
 }
 
 .questionExp {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 110px;
+    bottom: 30px;
+    right: 150px;
     margin: 20px;
     width: 400px;
-    height: 200px;
+    height: 210px;
     border-radius: 30px;
     background-color: #D9D9D9;
     padding: 20px;
@@ -128,8 +128,8 @@ body {
 .questionExp::after {
     content: "";
     position: absolute;
-    bottom: 20px; /* 꼬리의 위치 조정 */
-    right: -18px; /* 꼬리의 위치 조정 */
+    bottom: 20px; 
+    right: -18px;
     width: 0;
     height: 0;
     border-top: 20px solid transparent;

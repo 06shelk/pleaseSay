@@ -14,7 +14,7 @@ function checkCompatibility() {
 }
 
 function startSpeechRecognition() {
-    console.log("음성 입력 시작");
+    console.log("음성 입력 시작");    
 
     // 음성 입력 시작 이벤트 리스너
     recognition.addEventListener("result", (event) => {
@@ -23,6 +23,14 @@ function startSpeechRecognition() {
         text = text.replace(/\s+/g, ''); // 띄어쓰기 제거
         input.value = text; // 음성 입력 결과를 input 창에 표시
         handleSpeechInput(text); // 음성 입력 처리 함수 호출
+
+
+        if (text.includes("그만하기")) {
+            console.log("게임 종료");
+            recognition.stop();
+            window.location.href = "../html/gameChoice.html";
+            return;
+        }
     });
 
     recognition.addEventListener("error", (event) => {

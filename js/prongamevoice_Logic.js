@@ -1,5 +1,7 @@
 // inputValue.js
-
+function goBack() {
+    window.location.href = '../html/gameChoice.html'
+}
 let recognition = null;
 
 function checkCompatibility() {
@@ -29,7 +31,7 @@ function checkCompatibility() {
                 if (text.includes("그만하기")) {
                     console.log("게임 종료");
                     recognition.stop();
-                    window.location.href = "http://localhost/pleaseSay/html/gameChoice.html";
+                    window.location.href = "../html/gameChoice.html";
                     return;
                 }
 

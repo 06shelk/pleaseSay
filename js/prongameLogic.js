@@ -31,9 +31,20 @@ let sentences = [
         "id": 8,
         "title": "솔바람이 솔솔 송이버섯이 우수수 떨어지는 선산에 앉아 선선한 바람을 만끽했다",
     },
+    {
+        "id": 9,
+        "title": "내가 그린 구름 그림은 새털구름 그린 구름 그림이고 네가 그린 구름 그림은 깃털 구름 그린 구름 그림이다",
+    },{
+        "id": 10,
+        "title": "우유 성분 함유율은 칼슘 함유율이 철분 함유량보다 높은가 철분 함유량이 칼슘 함유량보다 높은가",
+    }
+
 
 ];
 
+function goBack() {
+    window.location.href = '../html/gameChoice.html'
+}
 
 let score = 0;
 

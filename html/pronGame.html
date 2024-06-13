@@ -24,8 +24,6 @@
             <div class="round-inner">
                 <span class="round">0</span>/5
             </div>
-            
-           <!-- <button onclick="start_game()">Start game</button> -->
         </div>
     </div>
 
@@ -34,21 +32,25 @@
         <div id="start-message"></div>
     </div>
 
-    <div class="goBackButton">
+    <div class="goBackButton" onclick="goBack()">
         <p>그만하기</p>
     </div>
 
        <!-- 마이크 -->
-   <div id="questionExp" class="questionExp">
+    <div id="questionExp" class="questionExp">
         <p>게임 설명</p>
-        <p id="gameDescription">게임 설명</p>
-        <p id="exp"></p>
+        <p id="gameDescription"> 이전 화면으로 가고 싶다면 
+            <br>“이전”을 말하고
+            <br>다음 화면으로 가고 싶다면
+            <br>“다음”을 말하며
+            <br>게임을 진행하세요</p>
     </div>
     <div class="questionIcon">
-        <img src="../img/questionIcon.png" class="icon" id="questionIcon">
+        <img src="../img/mic.gif" class="icon" id="questionIcon">
     </div>
 
     <!-- js -->
+    <script src="../js/question-logic.js"></script>
     <script src="js/levenshteinDistance.js"></script>
     <script src="../js/prongamevoice_Logic.js" ></script>
     <script src="../js/prongameLogic.js"></script>

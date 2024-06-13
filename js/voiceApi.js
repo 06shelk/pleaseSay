@@ -1,12 +1,12 @@
 // 게임 시작 페이지로 이동하는 함수
 function startGame() {
-    window.location.href = "http://localhost/pleaseSay/html/nameChange.html";
+    window.location.href = "html/nameChange.html";
 }
 
 
 // 랭킹 페이지로 이동하는 함수
 function ranking() {
-    window.location.href = "http://localhost/pleaseSay/html/rankGameChoice.html";
+    window.location.href = "html/rankGameChoice.html";
 }
 
 // 다음 페이지로 이동하는 함수
@@ -58,7 +58,7 @@ function lastGameMove(currentUrl) {
         endGame.dispatchEvent(new MouseEvent('mouseover'));
         setTimeout(function() {
             endGame.dispatchEvent(new MouseEvent('mouseout'));
-            window.location.href = "http://localhost/pleaseSay/php/lastWordRank.php"; 
+            window.location.href = "../php/lastWordRank.php"; 
         }, 1000);
     }
 }
@@ -78,7 +78,7 @@ function pronGameMove(currentUrl) {
     if (currentUrl.includes("gameChoice.html")) {
         handleMouseEvent(pronGame, "pronRule.html");
     } else if (currentUrl.includes("rankGameChoice.html")) {
-        handleMouseEvent(pronGame, "http://localhost/pleaseSay/php/pronRank.php");
+        handleMouseEvent(pronGame, "../php/pronRank.php");
     }
 }
 
@@ -146,7 +146,9 @@ function handleVoiceRecognition(event) {
             break;
         case "돌아가기":
             if (closestDistance <= 3) {
-                window.location.href = "../index.html"; // 랭킹 페이지에서 처음화면으로
+                if(currentUrl.includes("pronRank.php") || currentUrl.includes("lastWordRank.php")) {
+                    window.location.href = "../index.html"; // 랭킹 페이지에서 처음화면으로
+                }
             }
             break;
         default:
