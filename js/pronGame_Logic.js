@@ -48,7 +48,7 @@ function goBack() {
 
 let score = 0;
 
-const countDownElement = document.getElementById('countdown');
+const countDownElement = document.getElementById('question');
 const startMessageElement = document.getElementById('start-message');
 const gameElements = document.querySelectorAll('.prongame_container > *');
 
@@ -61,8 +61,7 @@ function startCountDown() {
         count--;
         if (count === 0) {
             clearInterval(countInterval);
-            countDownElement.style.display = 'none';
-            startMessageElement.textContent = "Game Start!";
+            countDownElement.textContent = "Game Start!";
             
             setTimeout(() => {
                 startMessageElement.style.display = 'none';
@@ -146,7 +145,7 @@ function show_result() {
     window.location.href = "../php/pronRank.php"; 
 }
 
-// Update the score based on Levenshtein similarity
+// Update the score based on Levenshtein siquestionlarity
 function updateScore(inputText, titleText) {
     const maxScore = 10; // 최대 점수
     const distance = levenshteinDistance(inputText, titleText);
