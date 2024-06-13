@@ -166,6 +166,17 @@ window.addEventListener('DOMContentLoaded', function() {
     var recognition = new webkitSpeechRecognition(); // 음성 인식 객체 생성
     recognition.lang = "ko-KR"; // 한국어 설정
 
+    recognition.onstart = function() {
+        console.log("음성 인식이 시작되었습니다.");
+        // 이미지 변경
+        const icon = document.getElementById('questionIcon');
+        if (currentUrl.includes("index.html")) { 
+            icon.src = './img/mic.gif';
+        }else {
+            icon.src = '../img/mic.gif'; 
+        }
+    };
+
     recognition.onresult = function(event) {
         handleVoiceRecognition(event); // 음성 인식 결과 처리
     };
@@ -175,6 +186,13 @@ window.addEventListener('DOMContentLoaded', function() {
     };
 
     recognition.onend = function() {
+        const icon = document.getElementById('questionIcon');
+        if (currentUrl.includes("index.html")) { 
+            icon.src = './img/mic_none.png';
+        }else {
+            icon.src = '../img/mic_none.png'; 
+        }
+        
         console.log("음성 인식이 중지되었습니다.");
         recognition.start(); // 녹음이 중지되면 다시 시작
     };
