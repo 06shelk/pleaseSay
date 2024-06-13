@@ -97,21 +97,21 @@ body {
     z-index: 99;
 	position: fixed;
     width: 100px;
-    height: 100px;
+    height: 70px;
     margin: 50px;
     bottom: 0;
     right: 0;
 }
 
 .questionIcon img {
-    width: 70px;
-    height: 70px;
+    width: 96px;
+    height: 54px;
 }
 
 .questionExp {
     display: none;
     position: fixed;
-    bottom: 50px;
+    bottom: 30px;
     right: 150px;
     margin: 20px;
     width: 400px;
