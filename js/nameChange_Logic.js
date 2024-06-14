@@ -58,9 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (levenshteinDistance("네", spokenText) <= 1 || levenshteinDistance("다음", spokenText) <= 2) {
                 localStorage.setItem('userName', nicknameSpan.textContent);
                 window.location.href = '../html/gameChoice.html';
-            } else if (levenshteinDistance("아니요", spokenText) <= 1) {
+            } else if (levenshteinDistance("다시하기", spokenText) <= 1) {
                 no(); // 초기 상태로 돌아가기
                 startRecognition();
+            }else {
+                console.log("어쩌라는거임?")
             }
         }
     };
