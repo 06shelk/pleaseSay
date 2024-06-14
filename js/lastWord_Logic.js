@@ -1,7 +1,7 @@
 const startWords = ["우리말", "끝말잇기", "게임"];
 const index = Math.floor(Math.random() * startWords.length);
 let word = startWords[index];
-let time = 30;  // 타이머를 120초로 설정
+let time = 30;  // 타이머를 30초로 설정
 let point = 0;
 let wordCount = 0;  // 입력된 단어 수를 추적
 
@@ -14,17 +14,15 @@ const pointZone = document.querySelector("#point");
 
 let timeout = null;
 let start = null;
+let timerInterval = null;  // 타이머 인터벌을 전역 변수로 선언
 
+function goBack() {
+    window.location.href = '../html/gameChoice.html';
+}
 
 window.onload = function() {
     startCountDown();
-    
 };
-
-function goBack() {
-    window.location.href = '../html/gameChoice.html'
-    console.log("왜안대?");
-}
 
 // 숫자 카운트 다운 함수
 function startCountDown() {
@@ -36,11 +34,10 @@ function startCountDown() {
         if (count === 0) {
             clearInterval(countInterval);
             keyWord.textContent = "Game Start!";
-           
-            timeCheck();
+
             setTimeout(() => {
-                initGame(); // 여기서 바로 initGame()을 호출합니다.
-            }, 1000); // 1초 후에 메시지 숨기기
+                initGame();
+            }, 1000);
         } else {
             keyWord.innerHTML = count;
         }
@@ -50,30 +47,49 @@ function startCountDown() {
 function initGame() {
     keyWord.innerHTML = word;
     pointZone.innerHTML = point;
+    
+    // 목소리 인식
+    startSpeechRecognition();
+    updateMicIcon(true);
     startTimer();
 }
 
-//시간
+// 타이머 시작 함수
 function startTimer() {
-    start = setInterval(timeCheck, 1000);
-    updateMicIcon(true);
+    timerInterval = setInterval(() => {
+        timeZone.textContent = time;
+
+        if (time <= 0) {
+            clearInterval(timerInterval);
+            endGame();
+        } else {
+            if (time <= 10) {
+                timeZone.style.color = 'red';
+                timeZone.style.borderColor = 'red';
+            }
+            time--;
+        }
+    }, 1000);
 }
 
-function timeCheck() {
-    timeZone.innerHTML = time;
-    if (time === 0) {
-        clearInterval(start);
-        endGame();
-    } else {
-        if (time <= 10) {
-            timeZone.style.color = 'red'; // 시간이 10초 이하일 때 텍스트 색상을 빨간색으로 변경
-            timeZone.style.borderColor = 'red';
-        }
-        time -= 1;
+// 타이머 멈추는 함수
+function stopTimer() {
+    if (timerInterval !== null) {
+        clearInterval(timerInterval);
+        console.log("타이머가 멈췄습니다.");
     }
 }
 
-//끝났을때 alert창으로 결과 보여줌
+// 타이머를 다시 시작하는 함수
+function restartTimer(newTime) {
+    stopTimer();  // 기존 타이머를 멈추고
+    time = newTime;  // 시간 초기화
+    startTimer();  // 타이머 다시 시작
+    console.log(`타이머가 ${newTime}초로 재설정되었습니다.`);
+}
+
+
+// 끝났을 때 alert 창으로 결과 보여줌
 function endGame() {
     input.setAttribute("disabled", true);
     // alert(`Game Over \n점수: ${point}`);
@@ -82,5 +98,4 @@ function endGame() {
         window.location.href = "../php/lastWordRank.php";
     }, 1000); // 1초 후에 페이지 새로고침
 }
-
 

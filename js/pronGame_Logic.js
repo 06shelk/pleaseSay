@@ -34,19 +34,19 @@ let sentences = [
     {
         "id": 9,
         "title": "내가 그린 구름 그림은 새털구름 그린 구름 그림이고 네가 그린 구름 그림은 깃털 구름 그린 구름 그림이다",
-    },{
+    },
+    {
         "id": 10,
         "title": "우유 성분 함유율은 칼슘 함유율이 철분 함유량보다 높은가 철분 함유량이 칼슘 함유량보다 높은가",
-    },{
+    },
+    {
         "id": 11,
         "title": "정경담당 정선생님 상담담당 성선생님",
     }
-
-
 ];
 
 function goBack() {
-    window.location.href = '../html/gameChoice.html'
+    window.location.href = '../html/gameChoice.html';
 }
 
 let score = 0;
@@ -55,8 +55,7 @@ const countDownElement = document.getElementById('question');
 const startMessageElement = document.getElementById('start-message');
 const gameElements = document.querySelectorAll('.prongame_container > *');
 
-// 숫자 카운트 다운 함수
-function startCountDown() {
+function startCountDownRound(callback) {
     let count = 3;
     countDownElement.textContent = count;
 
@@ -68,8 +67,8 @@ function startCountDown() {
             
             setTimeout(() => {
                 startMessageElement.style.display = 'none';
-                wrap.style.display = 'block';
-                start_game();
+                document.getElementById('wrap').style.display = 'block';
+                callback();
             }, 1000); // 1초 후에 메시지 숨기기
         } else {
             countDownElement.textContent = count;
@@ -78,15 +77,11 @@ function startCountDown() {
 }
 
 window.onload = function() {
-    startCountDown();
+    start_game();
 };
 
-
-
-// 게임 시작 함수
 function start_game() {
     console.log("게임 시작");
-    // 요소들 보이기
     document.getElementById('timer').style.display = 'block';
     document.getElementById('question').style.display = 'block';
     document.getElementById('speech_result').style.display = 'block';
@@ -96,37 +91,30 @@ function start_game() {
     play_next_round(1);
 }
 
-
 var array = [];
 
-// 게임 라운드 함수
 function play_game_step(step) {
+    startCountDownRound(() => {
+        document.querySelector(".round").innerHTML = step;
 
-    // 화면에 라운드가 업그레이드됨
-    document.querySelector(".round").innerHTML = step;
+        var input = document.getElementById("speech_result");
+        input.value = null;
 
-    // 입력창의 값이 ''이 됨
-    var input = document.getElementById("speech_result");
-    input.value = null;
+        let rand1;
+        do {
+            rand1 = Math.floor(Math.random() * sentences.length);
+        } while (array.includes(rand1));
 
-    // 한 문장이 랜덤으로 나옴 (중복 x)
-    let rand1;
-    do {
-        rand1 = Math.floor(Math.random() * sentences.length);
-    } while (array.includes(rand1));
+        array.push(rand1);
 
-    array.push(rand1); // 중복 체크를 위한 배열에 추가
+        document.getElementById("question").innerHTML = sentences[rand1].title;
 
-    document.getElementById("question").innerHTML = sentences[rand1].title;
-
-    // 목소리 인식
-    startSpeechREcognition();
-    updateMicIcon(true);
+        startSpeechREcognition();
+        updateMicIcon(true);
+    });
 }
 
-// 라운드 별로 기다리는 시간
 function play_next_round(currentRound) {
-    
     if (currentRound <= 5) {
         play_game_step(currentRound);
         console.log("다음 라운드까지 3초 대기...");
@@ -136,26 +124,22 @@ function play_next_round(currentRound) {
         }, 12000);
 
     } else {
-        // 마지막 라운드 이후 결과 표시
         show_result();
     }
 }
 
-// 결과
 function show_result() {
     console.log("결과창");
     console.log(score);
-    localStorage.setItem("Prongame",score)
+    localStorage.setItem("Prongame", score);
     window.location.href = "../php/pronRank.php"; 
 }
 
-// Update the score based on Levenshtein similarity
 function updateScore(inputText, titleText) {
-    const maxScore = 10; // 최대 점수
+    const maxScore = 10;
     const distance = levenshteinDistance(inputText, titleText);
     const similarityScore = Math.max(0, maxScore - distance);
 
     score += similarityScore;
     console.log("현재 스코어: " + score);
-    
 }
