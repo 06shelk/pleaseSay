@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끝말잇기 순위</title>
     
-    <link rel=stylesheet href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/ranking.css">
 </head>
 <body>
@@ -17,43 +17,49 @@
             <h1>끝말잇기 랭킹</h1>
         </div>
 
-    <table class="table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>순위</th>
+                    <th>사용자 이름</th>
+                    <th>점수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // 디비접속
+                include_once("./db_conn.php");
 
-        <?php
-        // 디비접속
-        include_once("./db_conn.php");
-        $sql = "SELECT * FROM login_form ORDER BY game2 DESC";
+                // WordGame 테이블에서 점수를 기준으로 내림차순 정렬하여 데이터를 가져오는 SQL 쿼리
+                $sql = "SELECT username, Score FROM WordGame ORDER BY Score DESC";
+                $result = mysqli_query($conn, $sql);
 
-        $result = mysqli_query($conn, $sql);
-        $num = mysqli_num_rows($result);
+                // 순위 계산을 위한 변수
+                $rank = 1;
 
-        // echo "<thead><tr><th>ID</th><th>게임1</th></thead>";
-        echo "<tbody>";
+                // 결과를 반복하여 테이블 행에 표시
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td class='rank'>" . $rank . "</td>";
+                    echo "<td class='name'>" . htmlspecialchars($row['username']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['Score']) . "</td>";
+                    echo "</tr>";
+                    $rank++;
+                }
 
-        // 결과를 반복하여 테이블 행에 표시
-        $rank = 1;
-        for ($i = 0; $i < $num; $i = $i + 1) {
-            $re = mysqli_fetch_row($result);
-            if ($re[2] !== null) { // $re[2] 값이 null이 아닌 경우에만 출력
-                echo "<tr><td class='rank'>".$rank."</td><td class='name'>".$re[0]."</td><td>".$re[2]."</td></tr>";
-                $rank++;
-            }
-        }
-
-        echo "</tbody></table>";
-        mysqli_close($conn);
-
-        ?>
-
-    </table>
+                // 데이터베이스 연결 종료
+                mysqli_close($conn);
+                ?>
+            </tbody>
+        </table>
+    </div>
 
     <div class="img xx">
-        <img src="../img/firstX.png" alt="" >
+        <img src="../img/firstX.png" alt="">
     </div>
     <div class="img oo">
         <img src="../img/firstO.png" alt="">
     </div>
-</div>
 
 
 <div class="button-container" onClick="location.href='login.html'">
@@ -63,5 +69,4 @@
 <script src="../js/updateMicIcon.js"></script>
 <script src="../js/voiceApi.js"></script>
 </body>
-
 </html>
