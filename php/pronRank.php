@@ -56,7 +56,7 @@
 </div>
 
 
-<div class="button-container" onClick="location.href='login.html'">
+<div class="button-container" onClick="location.href='../index.html'">
     <img src="../img/GoBackIcon.svg" alt="">
     돌아가기
 </div>

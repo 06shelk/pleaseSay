@@ -145,6 +145,7 @@ function play_next_round(currentRound) {
 function show_result() {
     console.log("결과창");
     console.log(score);
+    localStorage.setItem("Prongame",score)
     window.location.href = "../php/pronRank.php"; 
 }
 
@@ -156,5 +157,5 @@ function updateScore(inputText, titleText) {
 
     score += similarityScore;
     console.log("현재 스코어: " + score);
-    localStorage.setItem("Prongame",score)
+    
 }
