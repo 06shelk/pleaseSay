@@ -60,7 +60,21 @@
     <img src="../img/GoBackIcon.svg" alt="">
     돌아가기
 </div>
+
+<div id="questionExp" class="questionExp">
+    <p>게임 설명</p>
+    <p id="gameDescription"> 이전 화면으로 가고 싶다면 
+        <br>“이전”을 말하고
+        <br>다음 화면으로 가고 싶다면
+        <br>“다음”을 말하며
+        <br>게임을 진행하세요</p>
+</div>
+<div class="questionIcon">
+    <img src="../img/mic_none.png" class="icon" id="questionIcon">
+</div>
+
 <script src="../js/updateMicIcon.js"></script>
+<script src="../js/levenshteinDistance.js"></script>
 <script src="../js/voiceApi.js"></script>
 </body>
 </html>

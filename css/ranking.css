@@ -69,11 +69,12 @@ td {
 }
 
 .oo {
-    top: 188px; 
-    left: 150px;
+    top: 100px; 
+    left: 130px;
 }
 
 .xx {
-    bottom: 50px;
-    right: 0px;
+    bottom: 200px;
+    right: -100px;
+    width: 25%;
 }
