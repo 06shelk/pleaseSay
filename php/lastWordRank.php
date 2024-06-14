@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>끝말잇기 순위</title>
+    <title>발음 테스트 순위</title>
     
     <link rel=stylesheet href="../css/style.css">
     <link rel="stylesheet" href="../css/ranking.css">
@@ -14,7 +14,7 @@
     <div class="table-container">
         
         <div class="title_container"> 
-            <h1>끝말잇기 랭킹</h1>
+            <h1>발음 테스트 랭킹</h1>
         </div>
 
     <table class="table">
@@ -56,12 +56,25 @@
 </div>
 
 
-<div class="button-container" onClick="location.href='login.html'">
+<div class="button-container" onClick="location.href='../index.html'">
     <img src="../img/GoBackIcon.svg" alt="">
     돌아가기
 </div>
+
+<div id="questionExp" class="questionExp">
+    <p>게임 설명</p>
+    <p id="gameDescription"> 이전 화면으로 가고 싶다면 
+        <br>“이전”을 말하고
+        <br>다음 화면으로 가고 싶다면
+        <br>“다음”을 말하며
+        <br>게임을 진행하세요</p>
+</div>
+<div class="questionIcon">
+    <img src="../img/mic_none.png" class="icon" id="questionIcon">
+</div>
+    
 <script src="../js/updateMicIcon.js"></script>
+<script src="../js/levenshteinDistance.js"></script>
 <script src="../js/voiceApi.js"></script>
 </body>
-
 </html>

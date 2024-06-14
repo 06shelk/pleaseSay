@@ -5,7 +5,7 @@ let time = 30;  // 타이머를 120초로 설정
 let point = 0;
 let wordCount = 0;  // 입력된 단어 수를 추적
 
-const apiKey = "D857D92EE2FC749494BF756C5B793649";
+const apiKey = "419D383B04262EE0B0D3E75D713E5FD4";
 
 const keyWord = document.querySelector(".keyWord");
 const timeZone = document.querySelector(".timeZone");
@@ -18,6 +18,7 @@ let start = null;
 
 window.onload = function() {
     startCountDown();
+    
 };
 
 function goBack() {
@@ -55,6 +56,7 @@ function initGame() {
 //시간
 function startTimer() {
     start = setInterval(timeCheck, 1000);
+    updateMicIcon(true);
 }
 
 function timeCheck() {
