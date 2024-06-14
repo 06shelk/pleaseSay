@@ -61,11 +61,12 @@
         <img src="../img/firstO.png" alt="">
     </div>
 
-    <div class="button-container" onClick="location.href='login.html'">
-        <img src="../img/GoBackIcon.svg" alt="">
-        돌아가기
-    </div>
-    
-    <script src="../js/voiceApi.js"></script>
+
+<div class="button-container" onClick="location.href='login.html'">
+    <img src="../img/GoBackIcon.svg" alt="">
+    돌아가기
+</div>
+<script src="../js/updateMicIcon.js"></script>
+<script src="../js/voiceApi.js"></script>
 </body>
 </html>
