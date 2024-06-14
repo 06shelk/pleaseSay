@@ -5,11 +5,11 @@ let sentences = [
     },
     {
         "id": 2,
-        "title": "저기 계신 저분이 박 법학 박사이고 여기 계신 이 분이 백 법학 박사이다",
+        "title": "저기 계신 저분이 박 법학박사이고 여기 계신 이 분이 백 법학박사이다",
     },
     {
         "id": 3,
-        "title": "서울특별시 특허 허가과 허가 과장 허 과장",
+        "title": "서울특별시 특허허가과 허가과장 허과장",
     },
     {
         "id": 4,
@@ -21,7 +21,7 @@ let sentences = [
     },
     {
         "id": 6,
-        "title": "7월 7일은 평창 친구 친정 칠순 잔칫날",
+        "title": "칠월칠일은 평창 친구 친정 칠순 잔칫날",
     },
     {
         "id": 7,
@@ -37,6 +37,9 @@ let sentences = [
     },{
         "id": 10,
         "title": "우유 성분 함유율은 칼슘 함유율이 철분 함유량보다 높은가 철분 함유량이 칼슘 함유량보다 높은가",
+    },{
+        "id": 11,
+        "title": "정경담당 정선생님 상담담당 성선생님",
     }
 
 
@@ -48,7 +51,7 @@ function goBack() {
 
 let score = 0;
 
-const countDownElement = document.getElementById('countdown');
+const countDownElement = document.getElementById('question');
 const startMessageElement = document.getElementById('start-message');
 const gameElements = document.querySelectorAll('.prongame_container > *');
 
@@ -61,8 +64,7 @@ function startCountDown() {
         count--;
         if (count === 0) {
             clearInterval(countInterval);
-            countDownElement.style.display = 'none';
-            startMessageElement.textContent = "Game Start!";
+            countDownElement.textContent = "Game Start!";
             
             setTimeout(() => {
                 startMessageElement.style.display = 'none';
@@ -119,19 +121,19 @@ function play_game_step(step) {
 
     // 목소리 인식
     startSpeechREcognition();
-       
+    updateMicIcon(true);
 }
 
 // 라운드 별로 기다리는 시간
 function play_next_round(currentRound) {
-
+    
     if (currentRound <= 5) {
         play_game_step(currentRound);
         console.log("다음 라운드까지 3초 대기...");
         
         setTimeout(function () {
             play_next_round(currentRound + 1);
-        }, 10000);
+        }, 12000);
 
     } else {
         // 마지막 라운드 이후 결과 표시
@@ -153,7 +155,6 @@ function updateScore(inputText, titleText) {
     const similarityScore = Math.max(0, maxScore - distance);
 
     score += similarityScore;
-    document.getElementById("scoreText").innerHTML = score;
     console.log("현재 스코어: " + score);
     localStorage.setItem("Prongame",score)
 }
