@@ -95,7 +95,7 @@ function handleSpeechInput(text) {
                     pointZone.innerHTML = point;
                     input.style.borderColor = '#42FF60';
                     keyWord.innerHTML = "단어 준비 중..."
-                    stopTimer();
+                    pauseTimer();
 
                     fetch(`https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${HanTools.dueum(word[word.length - 1])}&advanced=y&sort=popular&type1=word&method=start&num=100&pos=1`)
                         .then(res => res.text())
@@ -113,13 +113,12 @@ function handleSpeechInput(text) {
                             if (comWord.length > 0) {
                                 keyWord.innerHTML = comWord[Math.floor(Math.random() * comWord.length)];
                                 input.style.borderColor = originalBorderColor;
-                                startSpeechRecognition();
+                                resumeTimer();
                             } else {
                                 handleNoMatchingWords();
-                            }
 
-                            // 시간 다시 흐르게 함
-                            restartTimer();
+                            }
+                           
                         })
                         .catch(error => {
                             console.log(error);
@@ -185,7 +184,7 @@ function handleNoMatchingWords() {
             }
 
             // 시간 다시 흐르게 함
-            // startTimer();
+            resumeTimer();
         })
         .catch(error => {
             console.log(error);
