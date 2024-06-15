@@ -55,24 +55,6 @@ function initGame() {
     startTimer();
 }
 
-// 타이머 시작 함수
-// function startTimer() {
-//     timerInterval = setInterval(() => {
-//         timeZone.textContent = time;
-
-//         if (time <= 0) {
-//             clearInterval(timerInterval);
-//             endGame();
-//         } else {
-//             if (time <= 10) {
-//                 timeZone.style.color = 'red';
-//                 timeZone.style.borderColor = 'red';
-//             }
-//             time--;
-//         }
-//     }, 1000);
-// }
-
 // 타이머 업데이트 함수
 function updateDisplay(time) {
     timeZone.textContent = time;

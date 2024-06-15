@@ -1,58 +1,78 @@
 let recognition = null;
+let isRecognitionActive = false; // 음성 인식 상태 플래그
+let nextWordActive = true; // 다음 단어 활성 여부 플래그
 
 function checkCompatibility() {
     try {
-
         if (!recognition) {
             recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
             recognition.lang = "ko";
             recognition.maxAlternatives = 9;
 
-            if (!recognition) {
-                alert("You cannot use speech api.");
-            }
-
             recognition.addEventListener("speechstart", handleSpeechStart);
             recognition.addEventListener("speechend", handleSpeechEnd);
             recognition.addEventListener("result", handleSpeechResult);
+            recognition.addEventListener("error", handleError);
+            recognition.addEventListener("end", handleEnd);
         }
     } catch (error) {
         console.error("에러가 났지만 무시하고 진행한다.", error);
     }
-
-    recognition.addEventListener("error", (event) => {
-        console.error("음성 인식 중 오류 발생: " + event.error);
-    });
-
-    recognition.addEventListener("end", () => {
-        console.log("음성 인식이 중지되었습니다.");
-        recognition.start(); // 녹음이 중지되면 다시 시작
-    });
 }
 
-// speechstart 이벤트 핸들러
 function handleSpeechStart() {
     console.log("speech Start");
+    isRecognitionActive = true; 
+    updateMicIcon(true);
 }
 
-// speechend 이벤트 핸들러
 function handleSpeechEnd() {
     console.log("speech End");
+    isRecognitionActive = false; 
+    updateMicIcon(false);
 }
 
-// 음성 인식 시작 핸들러
+function handleEnd() {
+    console.log("음성 인식이 중지되었습니다.");
+    isRecognitionActive = false; 
+    updateMicIcon(false);
+    // 일정 시간 후 음성 인식 재시작
+    setTimeout(() => startSpeechRecognition(), 1000);
+}
+
+function handleError(event) {
+    console.error("음성 인식 중 오류 발생: " + event.error);
+    isRecognitionActive = false; // 오류가 발생하면 플래그를 업데이트
+    if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+        alert('마이크 권한이 필요합니다.');
+    } else if (event.error === 'network') {
+        alert('네트워크 오류가 발생했습니다.');
+    }
+}
+
 function startSpeechRecognition() {
-    console.log("음성 입력 시작");    
-    recognition.start();
+    if (!isRecognitionActive && nextWordActive) { 
+        console.log("음성 입력 시작");
+        try {
+            recognition.start();
+            isRecognitionActive = true; 
+            updateMicIcon(true);
+        } catch (error) {
+            console.error("음성 인식 시작 실패:", error);
+        }
+    } else {
+        console.log("음성 인식이 이미 시작되었습니다.");
+    }
 }
 
-// 음성 인식 종료 핸들러
 function endSpeechRecognition() {
-    console.log("음성 입력 종료");
-    recognition.stop();
+    if (isRecognitionActive) { // 음성 인식이 진행 중인 경우에만 종료
+        console.log("음성 입력 종료");
+        recognition.stop();
+        isRecognitionActive = false; 
+    }
 }
 
-// 음성 결과 이벤트 핸들러
 function handleSpeechResult(event) {
     console.log("음성 인식 결과", event.results);
     let text = event.results[0][0].transcript;
@@ -60,25 +80,24 @@ function handleSpeechResult(event) {
     input.value = text; // 음성 입력 결과를 input 창에 표시
     handleSpeechInput(text); // 음성 입력 처리 함수 호출
 
-
     if (text.includes("그만하기")) {
         console.log("게임 종료");
         recognition.stop();
         window.location.href = "../html/gameChoice.html";
         return;
     }
+
+    if (nextWordActive) {
+        nextWordActive = false; // 기존의 nextWordActive를 false로 
+    } else {
+        nextWordActive = true; // 다음 단어 준비 중임을 표시
+    }
 }
 
-// 음성 입력 이벤트 처리 함수
 function handleSpeechInput(text) {
     const prevWord = keyWord.innerHTML;
     const word = text.trim();
-    const originalBorderColor = input.style.borderColor;
-    
 
-    // clearInterval(start);
-
-    // 입력된 단어가 이전 단어의 마지막 글자와 이어지는지 확인
     if (word.length > 1 && HanTools.dueum(prevWord[prevWord.length - 1]) === word[0]) {
         fetch(`https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${word}&advanced=y&method=exact`)
             .then(res => res.text())
@@ -96,6 +115,8 @@ function handleSpeechInput(text) {
                     input.style.borderColor = '#42FF60';
                     keyWord.innerHTML = "단어 준비 중..."
                     pauseTimer();
+                    
+                    recognition.stop(); // 음성 인식을 중지
 
                     fetch(`https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${HanTools.dueum(word[word.length - 1])}&advanced=y&sort=popular&type1=word&method=start&num=100&pos=1`)
                         .then(res => res.text())
@@ -112,13 +133,14 @@ function handleSpeechInput(text) {
 
                             if (comWord.length > 0) {
                                 keyWord.innerHTML = comWord[Math.floor(Math.random() * comWord.length)];
-                                input.style.borderColor = originalBorderColor;
+                                input.style.borderColor = '#ffffff';
                                 resumeTimer();
+                                nextWordActive = true;
+                                startSpeechRecognition(); // 음성 인식을 다시 시작
                             } else {
                                 handleNoMatchingWords();
-
                             }
-                           
+
                         })
                         .catch(error => {
                             console.log(error);
@@ -135,32 +157,28 @@ function handleSpeechInput(text) {
     }
 }
 
-// 잘못된 단어 처리
 function handleInvalidWord() {
-    const originalBorderColor = input.style.borderColor;
+    const originalBorderColor = '#ffffff';
     const originalKeyWord = keyWord.innerHTML;
-    
-    // 입력 필드의 테두리 색상을 빨간색으로 변경
+
     input.value = '';
     input.style.borderColor = 'red';
     keyWord.innerHTML = "잘못된 단어를 입력했습니다.";
+    nextWordActive = true;
     
-    // 1초 후 원래 상태로 복원
+
     setTimeout(() => {
         input.style.borderColor = originalBorderColor;
         keyWord.innerHTML = originalKeyWord;
+        startSpeechRecognition();
+       
     }, 1000);
-    
-    // 잘못된 입력이 있을 때, 새로운 단어를 제공하지 않고 타이머를 다시 시작합니다.
-    // startTimer();
-    
 }
 
-// 한방 단어
 function handleNoMatchingWords() {
-    keyWord.innerHTML = "이어질 단어가 없습니다."; // 안내 메시지 표시
-    // alert("이어질 단어가 없습니다."); // 경고 메시지 표시
-    point = point + 100; // 점수 100점 추가
+    const originalBorderColor = '#ffffff';
+    keyWord.innerHTML = "이어질 단어가 없습니다.";
+    point = point + 100;
     pointZone.innerHTML = point;
 
     fetch(`https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${HanTools.dueum(keyWord.innerHTML[0])}&advanced=y&sort=popular&type1=word&method=start&num=100&pos=1`)
@@ -179,11 +197,12 @@ function handleNoMatchingWords() {
 
             if (comWord.length > 0) {
                 keyWord.innerHTML = comWord[Math.floor(Math.random() * comWord.length)];
+                input.style.borderColor = originalBorderColor;
+                nextWordActive = true;
+                startSpeechRecognition(); // comWord가 있으면 음성 인식 시작
             } else {
                 keyWord.innerHTML = "랜덤 단어가 없습니다.";
             }
-
-            // 시간 다시 흐르게 함
             resumeTimer();
         })
         .catch(error => {
@@ -191,5 +210,4 @@ function handleNoMatchingWords() {
         });
 }
 
-// 페이지 로드 시 checkCompatibility 함수 실행
 window.addEventListener("load", checkCompatibility);
