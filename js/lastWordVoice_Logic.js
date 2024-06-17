@@ -164,12 +164,12 @@ function handleInvalidWord() {
     input.value = '';
     input.style.borderColor = 'red';
     keyWord.innerHTML = "잘못된 단어를 입력했습니다.";
-    nextWordActive = true;
-    
+    recognition.stop(); // 음성 인식을 중지
 
     setTimeout(() => {
         input.style.borderColor = originalBorderColor;
         keyWord.innerHTML = originalKeyWord;
+        nextWordActive = true;
         startSpeechRecognition();
        
     }, 1000);
