@@ -21,7 +21,7 @@ let sentences = [
     },
     {
         "id": 6,
-        "title": "칠월칠일은 평창 친구 친정 칠순 잔칫날",
+        "title": "7월7일은 평창 친구 친정 칠순 잔칫날",
     },
     {
         "id": 7,
@@ -44,6 +44,7 @@ let sentences = [
         "title": "정경담당 정선생님 상담담당 성선생님",
     }
 ];
+var point =0;
 
 function goBack() {
     window.location.href = '../html/gameChoice.html';
@@ -128,15 +129,45 @@ function play_next_round(currentRound) {
     }
 }
 
+// 이름 받기 함수
+function getUserName() {
+    var defaultUserName = "exampleUserName"; // 기본 사용자 이름 설정
+    var userName = localStorage.getItem("userName") || defaultUserName;
+    return userName;
+}
+
+// 서버에 데이터 전송 함수
+async function sendDataToServer(userName, point) {
+    try {
+        const response = await axios.post('http://localhost/pleaseSay/php/fetch_pronRank.php', {
+            userName: userName,
+            score: point
+        });
+
+        console.log('Data sent successfully.');
+        // 필요한 추가 작업 수행
+    } catch (error) {
+        console.error('There was an error sending the data:', error);
+    }
+}
+
 function show_result() {
     console.log("결과창");
     console.log(score);
     localStorage.setItem("Prongame", score);
-    window.location.href = "../php/pronRank.php"; 
+
+    point = localStorage.getItem("Prongame") || 0;
+    var userName = getUserName(); // 사용자 이름을 가져옴
+
+    sendDataToServer(userName, point);
+
+    setTimeout(() => {
+        window.location.href = "../php/pronRank.php"; 
+    }, 1000);
 }
 
 function updateScore(inputText, titleText) {
-    const maxScore = 10;
+    const maxScore = 20;
     const distance = levenshteinDistance(inputText, titleText);
     const similarityScore = Math.max(0, maxScore - distance);
 
