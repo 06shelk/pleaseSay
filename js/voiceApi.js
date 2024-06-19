@@ -112,6 +112,11 @@ function handleVoiceRecognition(event) {
                 startGame(); // 게임 선택 페이지로 이동
             }
             break;
+        case "시작하기":
+            if (closestDistance <= 3) {
+                startGame(); // 게임 선택 페이지로 이동
+            }
+            break;
         case "랭킹 보기":
             if (closestDistance <= 3) {
                 ranking(); // 랭킹 페이지로 이동
@@ -128,7 +133,7 @@ function handleVoiceRecognition(event) {
             }
             break;
         case "그만하기":
-            if (closestDistance <= 3) {
+            if (closestDistance <= 1) {
                 window.location.href = "gameChoice.html"; // 게임 선택 페이지로 이동
             }
             break;

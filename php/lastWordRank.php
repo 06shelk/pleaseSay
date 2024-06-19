@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>발음 테스트 순위</title>
+    <title>끝말 잇기 순위</title>
     
     <link rel=stylesheet href="../css/style.css">
     <link rel="stylesheet" href="../css/ranking.css">
@@ -14,7 +14,7 @@
     <div class="table-container">
         
         <div class="title_container"> 
-            <h1>발음 테스트 랭킹</h1>
+            <h1>끝말 잇기 랭킹</h1>
         </div>
 
     <table class="table">
@@ -22,7 +22,7 @@
         <?php
         // 디비접속
         include_once("./db_conn.php");
-        $sql = "SELECT * FROM login_form ORDER BY game2 DESC";
+        $sql = "SELECT * FROM wordgame ORDER BY Score DESC, createdAt DESC";
 
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
@@ -34,8 +34,8 @@
         $rank = 1;
         for ($i = 0; $i < $num; $i = $i + 1) {
             $re = mysqli_fetch_row($result);
-            if ($re[2] !== null) { // $re[2] 값이 null이 아닌 경우에만 출력
-                echo "<tr><td class='rank'>".$rank."</td><td class='name'>".$re[0]."</td><td>".$re[2]."</td></tr>";
+            if ($re[2] !== null) { // $re[2] 값 = score 이 null이 아닌 경우에만 출력
+                echo "<tr><td class='rank'>".$rank."</td><td class='name'>".$re[1]."</td><td>".$re[2]."</td></tr>";
                 $rank++;
             }
         }
@@ -72,7 +72,7 @@
 <div class="questionIcon">
     <img src="../img/mic_none.png" class="icon" id="questionIcon">
 </div>
-    
+
 <script src="../js/updateMicIcon.js"></script>
 <script src="../js/levenshteinDistance.js"></script>
 <script src="../js/voiceApi.js"></script>
