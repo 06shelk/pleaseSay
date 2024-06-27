@@ -59,6 +59,3 @@
 - 랭킹 화면
 
 <img src="img/mdImg/ranking.png" width="600">
-<br/><br/><br/><br/><br/>
-
-
