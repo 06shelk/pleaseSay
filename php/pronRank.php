@@ -22,7 +22,7 @@
         <?php
         // 디비접속
         include_once("./db_conn.php");
-        $sql = "SELECT * FROM login_form ORDER BY game2 DESC";
+        $sql = "SELECT * FROM prongame ORDER BY score DESC, createdAt DESC";
 
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
@@ -34,8 +34,8 @@
         $rank = 1;
         for ($i = 0; $i < $num; $i = $i + 1) {
             $re = mysqli_fetch_row($result);
-            if ($re[1] !== null) { // $re[2] 값이 null이 아닌 경우에만 출력
-                echo "<tr><td class='rank'>".$rank."</td><td class='name'>".$re[0]."</td><td>".$re[1]."</td></tr>";
+            if ($re[2] !== null) { // $re[2] 값이 null이 아닌 경우에만 출력
+                echo "<tr><td class='rank'>".$rank."</td><td class='name'>".$re[1]."</td><td>".$re[2]."</td></tr>";
                 $rank++;
             }
         }

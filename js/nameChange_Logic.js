@@ -1,6 +1,8 @@
 // 다른 페이지로 이동하는 함수
 function next() {
-    window.location.href = "../html/gameChoice.html";
+    const nicknameSpan = document.getElementById('nickname');
+    localStorage.setItem('userName', nicknameSpan.textContent);
+    window.location.href = '../html/gameChoice.html';
 }
 
 // 닉네임 재입력 함수
